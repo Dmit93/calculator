@@ -8,6 +8,10 @@ input:focus {
   outline: none;
 }
 
+body {
+  font-family: 'Ubuntu', sans-serif;
+}
+
 .calculator_frame {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -57,6 +61,14 @@ input:focus {
   width: 71%;
 }
 
+.calculator_frame__label label {
+  color: #888;
+  font-size: 14px;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}
+
 .calculator_frame__label.active {
   -webkit-box-shadow: none !important;
           box-shadow: none !important;
@@ -69,9 +81,12 @@ input:focus {
 
 .calculator_frame__label input {
   padding: 10px;
-  margin-top: 15px;
+  margin-top: 9px;
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
+  color: #000;
+  font-family: 'Ubuntu';
+  font-size: 14px;
 }
 
 .calculator_frame__label[data-rass="ploshad"] label {
@@ -109,6 +124,8 @@ input:focus {
 
 .calculator_frame__select p {
   position: absolute;
+  color: #000;
+  font-size: 14px;
 }
 
 .calculator_frame__select ul {
@@ -252,8 +269,18 @@ input:focus {
   left: 0;
 }
 
+.calculator_frame__checkbox-input input[value="yes"]:checked + label {
+  background: url(../img/check.png);
+}
+
+.calculator_frame__checkbox-input input[value="no"]:checked + label {
+  background: url(../img/remove.png);
+}
+
 .calculator_frame__checkbox-input input:checked + label {
-  background: #000;
+  background-size: 100% !important;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 .calculator_frame__checkbox-input label {
@@ -271,6 +298,7 @@ input:focus {
 
 .next_block_checkbox {
   display: none;
+  margin-top: 25px;
 }
 
 .next_block_checkbox.active_box {
