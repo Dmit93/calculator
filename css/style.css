@@ -24,7 +24,6 @@ body {
           justify-content: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  border: 1px solid var(--border-color);
   padding: 38px;
   width: 80%;
   margin: auto;
@@ -96,7 +95,6 @@ body {
 .calculator_frame__label input {
   padding: 10px;
   border: 1px solid var(--border-color);
-  border-radius: var(--border-radius);
   color: #000;
   font-family: 'Ubuntu';
   font-size: 14px;
@@ -153,7 +151,6 @@ body {
           align-items: center;
   padding-left: 10px;
   color: #989898;
-  border-radius: var(--border-radius);
   font-size: 14px;
   width: 200px;
   height: 50px;
@@ -230,7 +227,6 @@ body {
   color: #111;
   font-size: 14px;
   padding: 10px;
-  border-radius: var(--border-radius);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -334,6 +330,12 @@ body {
   margin-left: 10px;
 }
 
+@media (max-width: 1300px) {
+  .calculator_frame__parentImg {
+    width: 39%;
+  }
+}
+
 .next_block_checkbox {
   display: none;
   margin-top: 25px;
@@ -361,6 +363,7 @@ body {
 .fly_result__line {
   padding-bottom: 12px;
   border-bottom: 1px solid #e4e4e4;
+  display: none;
 }
 
 .fly_result__line > p {
