@@ -32,7 +32,7 @@
 
                     <img src="./img/arrow.png" alt="">
                 </div>
-                <span>Введите толщину стеновых блоков, мм</span>
+                <span>Выберите толщину стеновых блоков, мм (толщина стены из блока)</span>
             </div>
             <div class="calculator_frame__select-box" data-mouse-picture="1_kirp">
                 <div class="calculator_frame__select" data-mouse-picture="1_kirp" data-rass="kirpich">
@@ -62,10 +62,10 @@
 
                     <img src="./img/arrow.png" alt="">
                 </div>
-                <span>Будет ли утеплитель  между стеновым блоком и облицовкой</span>
+                <span>Будет ли утеплитель между блоком и лицевым кирпичом, выберите толщину, мм</span>
             </div>
             <div class="calculator_frame__checkbox" data-mouse-picture="5_stena">
-                <p>Будут ли перегородка внутри дома (5-ая стена)</p>
+                <p>Будут ли перегородка внутри дома</p>
                 <div class="calculator_frame__checkbox-input">
                     <input type="radio" id="yes" name="pereg" class="radio_anon" value="yes">
                     <label for="yes"></label>
@@ -140,35 +140,35 @@
         <img class="calculator_frame__parentImg" src="./img/dom1.jpg" alt="">
         <div class="fly_result">
             <div class="fly_result__line">
-                <p>Количество кирпича для лицевой части, площадью стен м²</p>
+                <p>Количество кирпича для лицевой части, площадью стен <ins></ins> м²</p>
                 <span data-num="1"></span>
             </div>
             <div class="fly_result__line">
-                <p>Объем стенового блока для строительства внешних стен, толщиной</p>
+                <p>Объем стенового блока для строительства внешних стен, толщиной <ins></ins></p>
                 <span data-num="2"></span>
             </div>
             <div class="fly_result__line">
-                <p>Объем стенового блока для строительства перегородочных стен толщиной</p>
+                <p>Объем стенового блока для строительства перегородочных стен толщиной <ins></ins></p>
                 <span data-num="3"></span>
             </div>
             <div class="fly_result__line">
-                <p>Объем стенового блока для строительства перегородочных стен толщиной</p>
+                <p>Объем стенового блока для строительства перегородочных стен толщиной <ins></ins></p>
                 <span data-num="4"></span>
             </div>
             <div class="fly_result__line">
-                <p>Объем утеплителя, для утепления площади стен м²</p>
+                <p>Объем утеплителя, для утепления площади стен <ins></ins> м²</p>
                 <span data-num="5"></span>
             </div>
             <div class="fly_result__line">
-                <p>Объем клея для стеновых блоков, для внешних стен, объемом</p>
+                <p>Объем клея для стеновых блоков, для внешних стен, объемом <ins></ins></p>
                 <span data-num="6"></span>
             </div>
             <div class="fly_result__line">
-                <p>Объем клея для стеновых блоков, для перегородочных стен</p>
+                <p>Объем клея для стеновых блоков, для перегородочных стен <ins></ins></p>
                 <span data-num="7"></span>
             </div>
             <div class="fly_result__line">
-                <p>Количество упаковок кладочного раствора для лицевого кирпича, для площади стен (43 кг на 1 м2)</p>
+                <p>Количество упаковок кладочного раствора для лицевого кирпича, для площади стен <ins></ins> (43 кг на 1 м2)</p>
                 <span data-num="8"></span>
             </div>
         </div>
@@ -197,6 +197,7 @@
                     case 1:
                         if (!isNaN(addition_percent(ploshad * kirpich, 5))) {
                             document.querySelector('.fly_result__line span[data-num="' + i + '"]').innerHTML = addition_percent(ploshad * kirpich, 5) + ' шт<p> (с учетом запаса 5%)</p>';
+                            document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').querySelector('ins').innerText = ploshad;
                             document.querySelector('.fly_result__line span[data-num="' + i + '"]').parentElement.style.display = 'block';
                         } else {
                             document.querySelector('.fly_result__line span[data-num="' + i + '"]').parentElement.style.display = 'none';
@@ -205,6 +206,7 @@
                     case 2:
                         if (!isNaN(addition_percent(ploshad * tolshina, 5))) {
                             document.querySelector('.fly_result__line span[data-num="' + i + '"]').innerHTML = addition_percent(ploshad * tolshina, 5) + ' м³<p>(с учетом запаса 5%)</p>';
+                            document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').querySelector('ins').innerText = tolshina + ' мм.';
                             document.querySelector('.fly_result__line span[data-num="' + i + '"]').parentElement.style.display = 'block';
                         } else {
                             document.querySelector('.fly_result__line span[data-num="' + i + '"]').parentElement.style.display = 'none';
@@ -213,6 +215,7 @@
                     case 3:
                         if (!isNaN(addition_percent(ploshad_steny * tolshina_steny, 5))) {
                             document.querySelector('.fly_result__line span[data-num="' + i + '"]').innerHTML = addition_percent(ploshad_steny * tolshina_steny, 5) + ' м³<p>(с учетом запаса 5%)</p>';
+                            document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').querySelector('ins').innerText = ploshad + ' м²';;
                             document.querySelector('.fly_result__line span[data-num="' + i + '"]').parentElement.style.display = 'block';
                         } else {
                             document.querySelector('.fly_result__line span[data-num="' + i + '"]').parentElement.style.display = 'none';
@@ -222,6 +225,7 @@
                         if (!isNaN(addition_percent(ploshad_steny_2 * tolshina_steny_2, 5))) {
                             document.querySelector('.fly_result__line span[data-num="' + i + '"]').innerHTML = addition_percent(ploshad_steny_2 * tolshina_steny_2, 5) + ' м³<p>(с учетом запаса 5%)</p>';
                             document.querySelector('.fly_result__line span[data-num="' + i + '"]').parentElement.style.display = 'block';
+                            document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').querySelector('ins').innerText = tolshina + ' мм.';
                         } else {
                             document.querySelector('.fly_result__line span[data-num="' + i + '"]').parentElement.style.display = 'none';
                         }
@@ -229,6 +233,7 @@
                     case 5:
                         if (!isNaN(addition_percent(ploshad * uteplitel, 15))) {
                             document.querySelector('.fly_result__line span[data-num="' + i + '"]').innerHTML = addition_percent(ploshad * uteplitel, 15) + ' м³<p>(с учетом запаса 5%)</p>';
+                            document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').querySelector('ins').innerText = ploshad;
                             document.querySelector('.fly_result__line span[data-num="' + i + '"]').parentElement.style.display = 'block';
                         } else {
                             document.querySelector('.fly_result__line span[data-num="' + i + '"]').parentElement.style.display = 'none';
@@ -238,6 +243,7 @@
                         let objem_bloka = parseFloat(document.querySelector('.fly_result__line span[data-num="2"]').innerText);
                         if (!isNaN(objem_bloka) && objem_bloka !== '') {
                             document.querySelector('.fly_result__line span[data-num="' + i + '"]').innerHTML = +((objem_bloka * 30) / 25).toFixed(1) + ' упаковок по 25 кг<p>(с учетом запаса 5%)</p>';
+                            document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').querySelector('ins').innerText = objem_bloka + ' м²';
                             document.querySelector('.fly_result__line span[data-num="' + i + '"]').parentElement.style.display = 'block';
                         } else {
                             document.querySelector('.fly_result__line span[data-num="' + i + '"]').parentElement.style.display = 'none';
@@ -248,14 +254,16 @@
                         let obj_bloka_3 = parseFloat(document.querySelector('.fly_result__line span[data-num="4"]').innerText);
                         if ((!isNaN(obj_bloka_2) && !isNaN(obj_bloka_3)) && (obj_bloka_2 !== '' && obj_bloka_3 !== '')) {
                             document.querySelector('.fly_result__line span[data-num="' + i + '"]').innerHTML = +(((Number(obj_bloka_2) + Number(obj_bloka_3)) * 30) / 25).toFixed(1) + ' упаковок по 25 кг<p>(с учетом запаса 5%)</p>';
+                            document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').querySelector('ins').innerText = Number(obj_bloka_2) + Number(obj_bloka_3) + ' м²';;
                             document.querySelector('.fly_result__line span[data-num="' + i + '"]').parentElement.style.display = 'block';
                         } else {
                             document.querySelector('.fly_result__line span[data-num="' + i + '"]').parentElement.style.display = 'none';
                         }
                         break;
                     case 8:
-                        if (!isNaN(addition_percent(ploshad * 43, 5))) {
+                        if (!isNaN(addition_percent(ploshad * 43, 5)) && (kirpich !== 'none' && kirpich !== '' && kirpich !== 'no')) {
                             document.querySelector('.fly_result__line span[data-num="' + i + '"]').innerHTML = +(addition_percent(ploshad * 43, 5) / 25).toFixed(1) + ' упаковок по 25 кг<p>(с учетом запаса 5%)</p>';
+                            document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').querySelector('ins').innerText = ploshad + ' м²';;
                             document.querySelector('.fly_result__line span[data-num="' + i + '"]').parentElement.style.display = 'block';
                         } else {
                             document.querySelector('.fly_result__line span[data-num="' + i + '"]').parentElement.style.display = 'none';
