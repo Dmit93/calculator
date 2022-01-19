@@ -336,6 +336,90 @@ body {
   }
 }
 
+@media (max-width: 1200px) {
+  .calculator_frame__parentImg {
+    width: 25%;
+  }
+}
+
+@media (max-width: 992px) {
+  .calculator_frame form {
+    margin-right: 0;
+    width: 100%;
+  }
+  .calculator_frame__parentImg {
+    display: none;
+  }
+}
+
+@media (max-width: 650px) {
+  .calculator_frame {
+    width: auto;
+    padding: 20px;
+  }
+  .calculator_frame__select-box span,
+  .calculator_frame__label label,
+  .calculator_frame__checkbox > p {
+    font-size: 11px !important;
+  }
+  .calculator_frame__label input {
+    width: 101px;
+  }
+  .calculator_frame__select {
+    width: 111px;
+  }
+  .calculator_frame__select ul,
+  .calculator_frame__select[data-rass="kirpich"] ul {
+    width: 200px;
+    left: -130%;
+  }
+  .calculator_frame__select ul li {
+    font-size: 12px;
+  }
+  .calculator_frame__select ul:after {
+    left: 73%;
+  }
+  .calculator_frame__select p {
+    font-size: 10px;
+  }
+  .calculator_frame__select-box span {
+    width: 50%;
+  }
+  .calculator_frame__checkbox {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    margin-top: 27px;
+    padding-left: 0;
+  }
+  .calculator_frame__checkbox > p {
+    width: 100%;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  .calculator_frame__checkbox-input p {
+    font-size: 12px;
+  }
+  .calculator_frame__checkbox-input:nth-of-type(1) {
+    width: 50%;
+    text-align: center;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+    margin-right: 0;
+  }
+  .calculator_frame__checkbox-input:last-child {
+    width: 44%;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    margin-right: 0;
+    margin-left: 13px;
+  }
+}
+
 .next_block_checkbox {
   display: none;
   margin-top: 25px;
@@ -366,6 +450,10 @@ body {
   display: none;
 }
 
+.fly_result__line ins {
+  text-decoration: none;
+}
+
 .fly_result__line > p {
   margin-bottom: 7px;
 }
@@ -392,5 +480,22 @@ body {
   font-size: 13px;
   color: #949494;
   font-weight: 100;
+}
+
+@media (max-width: 1200px) {
+  .fly_result {
+    width: 100%;
+  }
+  .fly_result__line, .fly_result__line:last-child {
+    width: 100%;
+  }
+  .fly_result__line > p,
+  .fly_result__line span {
+    font-size: 12px;
+  }
+  .fly_result__line > p p,
+  .fly_result__line span p {
+    font-size: 10px;
+  }
 }
 /*# sourceMappingURL=style.css.map */
