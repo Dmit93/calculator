@@ -14,110 +14,80 @@
 <body>
 
     <div class="calculator_frame">
-        <form action="">
-            <div class="calculator_frame__label" data-mouse-picture="dom2" data-rass="ploshad">
-                <input type="text" name="ploshad" id="calculator_ploshad" data-mouse-picture="dom2" class="calculator_frame__input_text">
-                <label for="calculator_ploshad">Введите площадь наружных стен коробки, за вычетом оконнных и дверных проемов, м²</label>
-            </div>
-            <div class="calculator_frame__select-box" data-mouse-picture="3_gaz">
-                <div class="calculator_frame__select" data-mouse-picture="3_gaz" data-rass="tolshina">
-                    <p></p>
-                    <ul>
-                        <li data-calc="0.2">200 мм</li>
-                        <li data-calc="0.25">250 мм</li>
-                        <li data-calc="0.3">300 мм</li>
-                        <li data-calc="0.37">370 мм</li>
-                        <li data-calc="0.4">400 мм</li>
-                    </ul>
+        <div class="calculator_frame__form">
+            <h2 data-mouse-picture="dom1"><span>Калькулятор</span>стенового материала<br>для строительства<span>коробки дома</span></h2>
+            <form action="">
 
-                    <img src="./img/arrow.png" alt="">
-                </div>
-                <span>Выберите толщину стеновых блоков, мм (толщина стены из блока)</span>
-            </div>
-            <div class="calculator_frame__select-box" data-mouse-picture="1_kirp">
-                <div class="calculator_frame__select" data-mouse-picture="1_kirp" data-rass="kirpich">
-                    <p></p>
-                    <ul>
-                        <li data-calc="62">кирпич 0,8NF (евро, 125*250*55мм, 62шт/1м²)</li>
-                        <li data-calc="52">кирпич 1NF (одинарный, 125*250*65мм, 52шт/1м²)</li>
-                        <li data-calc="40">кирпич 1,4NF (полуторный, 125*250*88мм, 40шт/1м²)</li>
-                        <li data-calc="26">кирпич 2,1NF (двойной, 125*250*138мм, 26шт/1м²)</li>
-                        <li data-calc="none">не учитывать кирпич</li>
-                    </ul>
 
-                    <img src="./img/arrow.png" alt="">
+                <div class="calculator_frame__label" data-mouse-picture="dom2" data-rass="ploshad">
+                    <input type="text" name="ploshad" id="calculator_ploshad" data-mouse-picture="dom2" class="calculator_frame__input_text">
+                    <label for="calculator_ploshad">Введите площадь наружных стен коробки, за вычетом оконнных и дверных проемов, м²</label>
                 </div>
-                <span>Выберите вариант лицевого кирпича для фасадной части дома</span>
-            </div>
-            <div class="calculator_frame__select-box" data-mouse-picture="2_utep">
-                <div class="calculator_frame__select" data-mouse-picture="2_utep" data-rass="uteplitel">
-                    <p></p>
-                    <ul>
-                        <li>не учитывать утеплитель</li>
-                        <li data-calc="0.02">толщина 20мм</li>
-                        <li data-calc="0.05">толщина 50мм</li>
-                        <li data-calc="0.1">толщина 100мм</li>
-                        <li data-calc="0.15">толщина 150мм</li>
-                    </ul>
-
-                    <img src="./img/arrow.png" alt="">
-                </div>
-                <span>Будет ли утеплитель между блоком и лицевым кирпичом, выберите толщину, мм</span>
-            </div>
-            <div class="calculator_frame__checkbox" data-mouse-picture="5_stena">
-                <p>Будут ли перегородка внутри дома</p>
-                <div class="calculator_frame__checkbox-input">
-                    <input type="radio" id="yes" name="pereg" class="radio_anon" value="yes">
-                    <label for="yes"></label>
-                    <p>Да</p>
-                </div>
-                <div class="calculator_frame__checkbox-input">
-                    <input type="radio" id="no" name="pereg" class="radio_anon" value="no">
-                    <label for="no"></label>
-                    <p>Нет</p>
-                </div>
-            </div>
-            <div class="next_block_checkbox">
-                <div class="calculator_frame__label" data-rass="ploshad_steny">
-                    <input type="text" name="ploshad_steny" id="calculator_ploshad" class="calculator_frame__input_text">
-                    <label for="calculator_ploshad">Ввыедите площадь перегородочной стены, за вычетом проемов, м²</label>
-                </div>
-                <div class="calculator_frame__select-box">
-                    <div class="calculator_frame__select" data-rass="tolshina_steny">
+                <div class="calculator_frame__select-box" data-mouse-picture="3_gaz">
+                    <div class="calculator_frame__select" data-mouse-picture="3_gaz" data-rass="tolshina">
                         <p></p>
                         <ul>
-                            <li data-calc="0.1">100мм</li>
-                            <li data-calc="0.2">200мм</li>
-                            <li data-calc="0.25">250мм</li>
-                            <li data-calc="0.3">300мм</li>
-                            <li data-calc="0.37">370мм</li>
-                            <li data-calc="0.4">400мм</li>
+                            <li data-calc="0.2">200 мм</li>
+                            <li data-calc="0.25">250 мм</li>
+                            <li data-calc="0.3">300 мм</li>
+                            <li data-calc="0.37">370 мм</li>
+                            <li data-calc="0.4">400 мм</li>
                         </ul>
 
                         <img src="./img/arrow.png" alt="">
                     </div>
-                    <span>Выберите толщину перегородочной стены, мм</span>
+                    <span>Выберите толщину стеновых блоков, мм (толщина стены из блока)</span>
                 </div>
-                <div class="calculator_frame__checkbox">
-                    <p>Добавить еще одну перегородочную стену другой толщиной</p>
+                <div class="calculator_frame__select-box" data-mouse-picture="1_kirp">
+                    <div class="calculator_frame__select" data-mouse-picture="1_kirp" data-rass="kirpich">
+                        <p></p>
+                        <ul>
+                            <li data-calc="62">кирпич 0,8NF (евро, 125*250*55мм, 62шт/1м²)</li>
+                            <li data-calc="52">кирпич 1NF (одинарный, 125*250*65мм, 52шт/1м²)</li>
+                            <li data-calc="40">кирпич 1,4NF (полуторный, 125*250*88мм, 40шт/1м²)</li>
+                            <li data-calc="26">кирпич 2,1NF (двойной, 125*250*138мм, 26шт/1м²)</li>
+                            <li data-calc="none">не учитывать кирпич</li>
+                        </ul>
+
+                        <img src="./img/arrow.png" alt="">
+                    </div>
+                    <span>Выберите вариант лицевого кирпича для фасадной части дома</span>
+                </div>
+                <div class="calculator_frame__select-box" data-mouse-picture="2_utep">
+                    <div class="calculator_frame__select" data-mouse-picture="2_utep" data-rass="uteplitel">
+                        <p></p>
+                        <ul>
+                            <li>не учитывать утеплитель</li>
+                            <li data-calc="0.02">толщина 20мм</li>
+                            <li data-calc="0.05">толщина 50мм</li>
+                            <li data-calc="0.1">толщина 100мм</li>
+                            <li data-calc="0.15">толщина 150мм</li>
+                        </ul>
+
+                        <img src="./img/arrow.png" alt="">
+                    </div>
+                    <span>Будет ли утеплитель между блоком и лицевым кирпичом? Выберите толщину, мм</span>
+                </div>
+                <div class="calculator_frame__checkbox" data-mouse-picture="5_stena">
+                    <p>Будут ли перегородки внутри дома</p>
                     <div class="calculator_frame__checkbox-input">
-                        <input type="radio" id="yes_t" name="pereg_t" class="radio_anon" value="yes">
-                        <label for="yes_t"></label>
+                        <input type="radio" id="yes" name="pereg" class="radio_anon" value="yes">
+                        <label for="yes"></label>
                         <p>Да</p>
                     </div>
                     <div class="calculator_frame__checkbox-input">
-                        <input type="radio" id="no_t" name="pereg_t" class="radio_anon" value="no">
-                        <label for="no_t"></label>
+                        <input type="radio" id="no" name="pereg" class="radio_anon" value="no">
+                        <label for="no"></label>
                         <p>Нет</p>
                     </div>
                 </div>
                 <div class="next_block_checkbox">
-                    <div class="calculator_frame__label" data-rass="ploshad_steny_2">
-                        <input type="text" name="ploshad_steny_2" id="calculator_ploshad" class="calculator_frame__input_text">
+                    <div class="calculator_frame__label" data-rass="ploshad_steny">
+                        <input type="text" name="ploshad_steny" id="calculator_ploshad" class="calculator_frame__input_text">
                         <label for="calculator_ploshad">Введите площадь перегородочной стены, за вычетом проемов, м²</label>
                     </div>
                     <div class="calculator_frame__select-box">
-                        <div class="calculator_frame__select" data-rass="tolshina_steny_2">
+                        <div class="calculator_frame__select" data-rass="tolshina_steny">
                             <p></p>
                             <ul>
                                 <li data-calc="0.1">100мм</li>
@@ -132,11 +102,119 @@
                         </div>
                         <span>Выберите толщину перегородочной стены, мм</span>
                     </div>
+                    <div class="calculator_frame__checkbox">
+                        <p>Добавить еще одну перегородочную стену другой толщиной</p>
+                        <div class="calculator_frame__checkbox-input">
+                            <input type="radio" id="yes_t" name="pereg_t" class="radio_anon" value="yes">
+                            <label for="yes_t"></label>
+                            <p>Да</p>
+                        </div>
+                        <div class="calculator_frame__checkbox-input">
+                            <input type="radio" id="no_t" name="pereg_t" class="radio_anon" value="no">
+                            <label for="no_t"></label>
+                            <p>Нет</p>
+                        </div>
+                    </div>
+                    <div class="next_block_checkbox">
+                        <div class="calculator_frame__label" data-rass="ploshad_steny_2">
+                            <input type="text" name="ploshad_steny_2" id="calculator_ploshad" class="calculator_frame__input_text">
+                            <label for="calculator_ploshad">Введите площадь перегородочной стены, за вычетом проемов, м²</label>
+                        </div>
+                        <div class="calculator_frame__select-box">
+                            <div class="calculator_frame__select" data-rass="tolshina_steny_2">
+                                <p></p>
+                                <ul>
+                                    <li data-calc="0.1">100мм</li>
+                                    <li data-calc="0.2">200мм</li>
+                                    <li data-calc="0.25">250мм</li>
+                                    <li data-calc="0.3">300мм</li>
+                                    <li data-calc="0.37">370мм</li>
+                                    <li data-calc="0.4">400мм</li>
+                                </ul>
 
+                                <img src="./img/arrow.png" alt="">
+                            </div>
+                            <span>Выберите толщину перегородочной стены, мм</span>
+                        </div>
+
+                    </div>
                 </div>
-            </div>
-            <input type="submit" value="Рассчитать" class="calculator_frame__submit">
-        </form>
+                <div class="calculator_frame__checkbox" data-mouse-picture="5_stena">
+                    <p>Рассчитайте кирпич для цоколя</p>
+                    <div class="calculator_frame__checkbox-input">
+                        <input type="radio" id="yes_pereg" name="pereg" class="radio_anon" value="yes">
+                        <label for="yes_pereg"></label>
+                        <p>Да</p>
+                    </div>
+                    <div class="calculator_frame__checkbox-input">
+                        <input type="radio" id="no_pereg" name="pereg" class="radio_anon" value="no">
+                        <label for="no_pereg"></label>
+                        <p>Нет</p>
+                    </div>
+                </div>
+                <div class="next_block_checkbox">
+                    <div class="calculator_frame__label" data-rass="dlina_sten_cokol">
+                        <input type="text" name="dlina_sten_cokol" id="dlina_sten_cokol" class="calculator_frame__input_text">
+                        <label for="dlina_sten_cokol">Ввыедите длину стен для кладки цокольного кирпича</label>
+                    </div>
+                    <div class="calculator_frame__select-box">
+                        <div class="calculator_frame__select" data-rass="tolshina_steny_cokol">
+                            <p></p>
+                            <ul>
+                                <li data-calc="0.12">120мм (в полкирпича)</li>
+                                <li data-calc="0.25">250мм (в один кирпич)</li>
+                                <li data-calc="0.38">380мм (в полтора кирпича)</li>
+                                <li data-calc="0.51">510мм (в два кирпича)</li>
+                                <li data-calc="0.64">640мм (в два с половиной кирпича)</li>
+                            </ul>
+
+                            <img src="./img/arrow.png" alt="">
+                        </div>
+                        <span>Выберите толщину стены кирпичной кладки для цоколя</span>
+                    </div>
+                    <div class="calculator_frame__label" data-rass="vysota_cokolya">
+                        <input type="text" name="vysota_cokolya" id="vysota_cokolya" class="calculator_frame__input_text">
+                        <label for="vysota_cokolya">Ввыедите высоту цоколя (от фундамента до блоков)</label>
+                    </div>
+                    <div class="calculator_frame__checkbox" data-mouse-picture="5_stena">
+                        <p>Будут ли внутренние стены у цоколя?</p>
+                        <div class="calculator_frame__checkbox-input">
+                            <input type="radio" id="yes_vn" name="vnut_steny" class="radio_anon" value="yes">
+                            <label for="yes_vn"></label>
+                            <p>Да</p>
+                        </div>
+                        <div class="calculator_frame__checkbox-input">
+                            <input type="radio" id="no_vn" name="vnut_steny" class="radio_anon" value="no">
+                            <label for="no_vn"></label>
+                            <p>Нет</p>
+                        </div>
+                    </div>
+                    <div class="next_block_checkbox">
+                        <div class="calculator_frame__label" data-rass="vnut_dlina_steny_cokol">
+                            <input type="text" name="vnut_dlina_steny_cokol" id="vnut_dlina_steny_cokol" class="calculator_frame__input_text">
+                            <label for="vnut_dlina_steny_cokol">Введите длину стены, м</label>
+                        </div>
+                        <div class="calculator_frame__select-box">
+                            <div class="calculator_frame__select" data-rass="vnut_tolshina_steny_cokol">
+                                <p></p>
+                                <ul>
+                                    <li data-calc="0.1">100мм</li>
+                                    <li data-calc="0.2">200мм</li>
+                                    <li data-calc="0.25">250мм</li>
+                                    <li data-calc="0.3">300мм</li>
+                                    <li data-calc="0.37">370мм</li>
+                                    <li data-calc="0.4">400мм</li>
+                                </ul>
+
+                                <img src="./img/arrow.png" alt="">
+                            </div>
+                            <span>Выберите толщину стены, м</span>
+                        </div>
+                    </div>
+                </div>
+                <input type="submit" value="Рассчитать" class="calculator_frame__submit">
+            </form>
+        </div>
         <img class="calculator_frame__parentImg" src="./img/dom1.jpg" alt="">
         <div class="fly_result">
             <div class="fly_result__line">
@@ -168,173 +246,32 @@
                 <span data-num="7"></span>
             </div>
             <div class="fly_result__line">
-                <p>Количество упаковок кладочного раствора для лицевого кирпича, для площади стен <ins></ins> (43 кг на 1 м2)</p>
-                <span data-num="8"></span>
+                <p>Количество кладочного раствора для лицевого кирпича, для площади стен <ins></ins></p>
+                <span class="fly_result__line-double" data-num="8">
+                    <ins class="fly_result__line-cement"></ins>
+                    <ins class="fly_result__line-pesok"></ins>
+                </span>
+            </div>
+            <div class="fly_result__line">
+                <p>Для строительства цоколя потребуется <ins class="fly_result__line-1"></ins> м³ кирпича</p>
+                <span data-num="9"></span>
+            </div>
+            <div class="fly_result__line">
+                <p>Количество кирпича для строительства основных стен цоколя <ins></ins> м³ кирпича</p>
+                <span data-num="10"></span>
+            </div>
+            <div class="fly_result__line">
+                <p>Количество кладочного раствора для цокольного кирпича, объемом <ins></ins> м³</p>
+                <span class="fly_result__line-double" data-num="11">
+                    <ins class="fly_result__line-cement"></ins>
+                    <ins class="fly_result__line-pesok"></ins>
+                </span>
             </div>
         </div>
     </div>
 
-    <script>
-        function addition_percent(number, percent) {
-            let tempoary_number = (number / 100) * percent;
-            return +(tempoary_number + number).toFixed(1);
-        }
-
-        document.querySelector('.calculator_frame__submit').addEventListener('click', function(e) {
-            e.preventDefault();
-            document.querySelector('.fly_result').style.display = 'block';
-            let ploshad = document.querySelector('div[data-rass="ploshad"] input').value !== '' ? document.querySelector('div[data-rass="ploshad"] input').value : 'no';
-            let tolshina = document.querySelector('div[data-rass="tolshina"] p').dataset.result ? document.querySelector('div[data-rass="tolshina"] p').dataset.result : 'no';
-            let kirpich = document.querySelector('div[data-rass="kirpich"] p').dataset.result ? document.querySelector('div[data-rass="kirpich"] p').dataset.result : 'no';
-            let uteplitel = document.querySelector('div[data-rass="uteplitel"] p').dataset.result ? document.querySelector('div[data-rass="uteplitel"] p').dataset.result : 'no';
-            let ploshad_steny = document.querySelector('div[data-rass="ploshad_steny"] input').value ? document.querySelector('div[data-rass="ploshad_steny"] input').value : 'no';
-            let tolshina_steny = document.querySelector('div[data-rass="tolshina_steny"] p').dataset.result ? document.querySelector('div[data-rass="tolshina_steny"] p').dataset.result : 'no';
-            let ploshad_steny_2 = document.querySelector('div[data-rass="ploshad_steny_2"] input').value ? document.querySelector('div[data-rass="ploshad_steny_2"] input').value : 'no';
-            let tolshina_steny_2 = document.querySelector('div[data-rass="tolshina_steny_2"] p').dataset.result ? document.querySelector('div[data-rass="tolshina_steny_2"] p').dataset.result : 'no';
-
-            for (let i = 1; i <= 8; i++) {
-                switch (i) {
-                    case 1:
-                        if (!isNaN(addition_percent(ploshad * kirpich, 5))) {
-                            document.querySelector('.fly_result__line span[data-num="' + i + '"]').innerHTML = addition_percent(ploshad * kirpich, 5) + ' шт<p> (с учетом запаса 5%)</p>';
-                            document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').querySelector('ins').innerText = ploshad;
-                            document.querySelector('.fly_result__line span[data-num="' + i + '"]').parentElement.style.display = 'block';
-                        } else {
-                            document.querySelector('.fly_result__line span[data-num="' + i + '"]').parentElement.style.display = 'none';
-                        }
-                        break;
-                    case 2:
-                        if (!isNaN(addition_percent(ploshad * tolshina, 5))) {
-                            document.querySelector('.fly_result__line span[data-num="' + i + '"]').innerHTML = addition_percent(ploshad * tolshina, 5) + ' м³<p>(с учетом запаса 5%)</p>';
-                            document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').querySelector('ins').innerText = tolshina + ' мм.';
-                            document.querySelector('.fly_result__line span[data-num="' + i + '"]').parentElement.style.display = 'block';
-                        } else {
-                            document.querySelector('.fly_result__line span[data-num="' + i + '"]').parentElement.style.display = 'none';
-                        }
-                        break;
-                    case 3:
-                        if (!isNaN(addition_percent(ploshad_steny * tolshina_steny, 5))) {
-                            document.querySelector('.fly_result__line span[data-num="' + i + '"]').innerHTML = addition_percent(ploshad_steny * tolshina_steny, 5) + ' м³<p>(с учетом запаса 5%)</p>';
-                            document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').querySelector('ins').innerText = ploshad + ' м²';;
-                            document.querySelector('.fly_result__line span[data-num="' + i + '"]').parentElement.style.display = 'block';
-                        } else {
-                            document.querySelector('.fly_result__line span[data-num="' + i + '"]').parentElement.style.display = 'none';
-                        }
-                        break;
-                    case 4:
-                        if (!isNaN(addition_percent(ploshad_steny_2 * tolshina_steny_2, 5))) {
-                            document.querySelector('.fly_result__line span[data-num="' + i + '"]').innerHTML = addition_percent(ploshad_steny_2 * tolshina_steny_2, 5) + ' м³<p>(с учетом запаса 5%)</p>';
-                            document.querySelector('.fly_result__line span[data-num="' + i + '"]').parentElement.style.display = 'block';
-                            document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').querySelector('ins').innerText = tolshina + ' мм.';
-                        } else {
-                            document.querySelector('.fly_result__line span[data-num="' + i + '"]').parentElement.style.display = 'none';
-                        }
-                        break;
-                    case 5:
-                        if (!isNaN(addition_percent(ploshad * uteplitel, 15))) {
-                            document.querySelector('.fly_result__line span[data-num="' + i + '"]').innerHTML = addition_percent(ploshad * uteplitel, 15) + ' м³<p>(с учетом запаса 5%)</p>';
-                            document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').querySelector('ins').innerText = ploshad;
-                            document.querySelector('.fly_result__line span[data-num="' + i + '"]').parentElement.style.display = 'block';
-                        } else {
-                            document.querySelector('.fly_result__line span[data-num="' + i + '"]').parentElement.style.display = 'none';
-                        }
-                        break;
-                    case 6:
-                        let objem_bloka = parseFloat(document.querySelector('.fly_result__line span[data-num="2"]').innerText);
-                        if (!isNaN(objem_bloka) && objem_bloka !== '') {
-                            document.querySelector('.fly_result__line span[data-num="' + i + '"]').innerHTML = +((objem_bloka * 30) / 25).toFixed(1) + ' упаковок по 25 кг<p>(с учетом запаса 5%)</p>';
-                            document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').querySelector('ins').innerText = objem_bloka + ' м²';
-                            document.querySelector('.fly_result__line span[data-num="' + i + '"]').parentElement.style.display = 'block';
-                        } else {
-                            document.querySelector('.fly_result__line span[data-num="' + i + '"]').parentElement.style.display = 'none';
-                        }
-                        break;
-                    case 7:
-                        let obj_bloka_2 = parseFloat(document.querySelector('.fly_result__line span[data-num="3"]').innerText);
-                        let obj_bloka_3 = parseFloat(document.querySelector('.fly_result__line span[data-num="4"]').innerText);
-                        if ((!isNaN(obj_bloka_2) && !isNaN(obj_bloka_3)) && (obj_bloka_2 !== '' && obj_bloka_3 !== '')) {
-                            document.querySelector('.fly_result__line span[data-num="' + i + '"]').innerHTML = +(((Number(obj_bloka_2) + Number(obj_bloka_3)) * 30) / 25).toFixed(1) + ' упаковок по 25 кг<p>(с учетом запаса 5%)</p>';
-                            document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').querySelector('ins').innerText = Number(obj_bloka_2) + Number(obj_bloka_3) + ' м²';;
-                            document.querySelector('.fly_result__line span[data-num="' + i + '"]').parentElement.style.display = 'block';
-                        } else {
-                            document.querySelector('.fly_result__line span[data-num="' + i + '"]').parentElement.style.display = 'none';
-                        }
-                        break;
-                    case 8:
-                        if (!isNaN(addition_percent(ploshad * 43, 5)) && (kirpich !== 'none' && kirpich !== '' && kirpich !== 'no')) {
-                            document.querySelector('.fly_result__line span[data-num="' + i + '"]').innerHTML = +(addition_percent(ploshad * 43, 5) / 25).toFixed(1) + ' упаковок по 25 кг<p>(с учетом запаса 5%)</p>';
-                            document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').querySelector('ins').innerText = ploshad + ' м²';;
-                            document.querySelector('.fly_result__line span[data-num="' + i + '"]').parentElement.style.display = 'block';
-                        } else {
-                            document.querySelector('.fly_result__line span[data-num="' + i + '"]').parentElement.style.display = 'none';
-                        }
-                        break;
-                    default:
-                        break;
-                }
-            }
-
-        });
 
 
-
-        document.querySelector('.calculator_frame').addEventListener('click', function(e) {
-            if (e.target.classList.contains('calculator_frame__select')) {
-                e.target.querySelector('ul').classList.toggle('active');
-            } else if (e.target.tagName === 'P') {
-                e.target.closest('.calculator_frame__select').querySelector('ul').classList.toggle('active');
-            }
-
-            if (e.target.tagName === 'LI' && e.target.closest('ul')) {
-                e.target.closest('ul').querySelectorAll('li').forEach(i => i.classList.remove('active'))
-                e.target.classList.add('active');
-                e.target.closest('.calculator_frame__select').querySelector('p').innerText = e.target.innerText;
-                e.target.closest('.calculator_frame__select').querySelector('p').setAttribute('data-result', e.target.getAttribute('data-calc'));
-                e.target.closest('ul').classList.remove('active');
-
-            }
-        });
-
-
-        document.querySelector('.calculator_frame').addEventListener('change', function(e) {
-            if (e.target.classList.contains('radio_anon')) {
-                switch (e.target.value) {
-                    case 'yes':
-                        e.target.closest('.calculator_frame__checkbox').nextElementSibling.classList.add('active_box');
-                        break;
-                    case 'no':
-                        e.target.closest('.calculator_frame__checkbox').nextElementSibling.classList.remove('active_box');
-                        break;
-                    default:
-                        break;
-                }
-            }
-
-        });
-
-        let path = 'img/';
-        document.querySelector('.calculator_frame form').addEventListener('mouseover', function(e) {
-            // if (e.target.tagName === 'DIV' && e.target.getAttribute('data-mouse-picture') && !e.target.closest('.next_block_checkbox') ||
-            //     e.target.tagName === 'SPAN' && e.target.closest('.calculator_frame__select-box') && !e.target.closest('.next_block_checkbox') ||
-            //     e.target.classList.contains('calculator_frame__select') && !e.target.closest('.next_block_checkbox') ||
-            //     e.target.tagName === 'INPUT' && !e.target.closest('.next_block_checkbox') ||
-            //     e.target.tagName === 'LABEL' && !e.target.closest('.next_block_checkbox')) {
-
-            if ((e.target.tagName === 'DIV' && e.target.getAttribute('data-mouse-picture') ||
-                    e.target.classList.contains('calculator_frame__select-box') ||
-                    e.target.classList.contains('calculator_frame__input_text') ||
-                    e.target.classList.contains('calculator_frame__label') ||
-                    e.target.classList.contains('calculator_frame__checkbox') ||
-                    (e.target.tagName === 'LABEL' && !e.target.closest('.calculator_frame__checkbox')) ||
-                    e.target.tagName === 'SPAN') && !e.target.closest('.next_block_checkbox')) {
-                document.querySelectorAll('.calculator_frame form > div').forEach(i => i.classList.remove('active'));
-                e.target.classList.add('active')
-                let src = (e.target.tagName === 'SPAN' && e.target.closest('.calculator_frame__select-box') || e.target.tagName === 'LABEL' || e.target.tagName === 'INPUT' || e.target.classList.contains('calculator_frame__select')) ? e.target.parentNode.getAttribute('data-mouse-picture') : e.target.getAttribute('data-mouse-picture');
-                (e.target.tagName === 'SPAN' && e.target.closest('.calculator_frame__select-box') || e.target.tagName === 'LABEL' || e.target.tagName === 'INPUT' || e.target.classList.contains('calculator_frame__select')) ? e.target.parentNode.classList.add('active'): e.target.classList.add('active');
-                document.querySelector('.calculator_frame__parentImg').setAttribute('src', `${path + src + '.jpg'}`);
-            }
-
-        });
-    </script>
+    <script src="js/script.js"></script>
 
 </html>
