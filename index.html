@@ -155,7 +155,7 @@
                 <div class="next_block_checkbox">
                     <div class="calculator_frame__label" data-rass="dlina_sten_cokol">
                         <input type="text" name="dlina_sten_cokol" id="dlina_sten_cokol" class="calculator_frame__input_text">
-                        <label for="dlina_sten_cokol">Ввыедите длину стен для кладки цокольного кирпича</label>
+                        <label for="dlina_sten_cokol">Введите длину стен для кладки цокольного кирпича, м</label>
                     </div>
                     <div class="calculator_frame__select-box">
                         <div class="calculator_frame__select" data-rass="tolshina_steny_cokol">
@@ -170,11 +170,28 @@
 
                             <img src="./img/arrow.png" alt="">
                         </div>
-                        <span>Выберите толщину стены кирпичной кладки для цоколя</span>
+                        <span>Выберите толщину стены кирпичной кладки для цоколя, мм</span>
                     </div>
-                    <div class="calculator_frame__label" data-rass="vysota_cokolya">
-                        <input type="text" name="vysota_cokolya" id="vysota_cokolya" class="calculator_frame__input_text">
-                        <label for="vysota_cokolya">Ввыедите высоту цоколя (от фундамента до блоков)</label>
+                    <div class="calculator_frame__select-box">
+                        <div class="calculator_frame__select" data-rass="vysota_cokolya">
+                            <p></p>
+                            <ul>
+                                <li data-calc="0.075">1 ряд кирпича (75 мм)</li>
+                                <li data-calc="0.15">2 ряда кирпича (150 мм) </li>
+                                <li data-calc="0.225">3 ряда кирпича (225 мм)</li>
+                                <li data-calc="0.3">4 ряда кирпича (300мм)</li>
+                                <li data-calc="0.375">5 рядов кирпичей (375мм)</li>
+                                <li data-calc="0.45">6 рядов кирпичей (450мм)</li>
+                                <li data-calc="0.525">7 рядов кирпичей (525мм)</li>
+                                <li data-calc="0.6">8 рядов кирпичей (600мм)</li>
+                                <li data-calc="0.675">9 рядов кирпичей (675мм)</li>
+                                <li data-calc="0.75">10 рядов кирпичей (750мм)</li>
+                                <li data-calc="none">Введите собственное значение</li>
+                            </ul>
+
+                            <img src="./img/arrow.png" alt="">
+                        </div>
+                        <span>Выберите высоту цокольной стены (от фундамента до блока)</span>
                     </div>
                     <div class="calculator_frame__checkbox" data-mouse-picture="5_stena">
                         <p>Будут ли внутренние стены у цоколя?</p>
@@ -218,54 +235,87 @@
         <img class="calculator_frame__parentImg" src="./img/dom1.jpg" alt="">
         <div class="fly_result">
             <div class="fly_result__line">
-                <p>Количество кирпича для лицевой части, площадью стен <ins></ins> м²</p>
-                <span data-num="1"></span>
+                <img src="./img/1_result.png" alt="">
+                <div class="fly_result__line-text">
+                    <p>Количество кирпича для лицевой части, площадью стен <ins></ins> м²</p>
+                    <span data-num="1"></span>
+                </div>
             </div>
             <div class="fly_result__line">
-                <p>Объем стенового блока для строительства внешних стен, толщиной <ins></ins></p>
-                <span data-num="2"></span>
+                <img src="./img/2_result.png" alt="">
+                <div class="fly_result__line-text">
+                    <p>Объем стенового блока для строительства внешних стен, толщиной <ins></ins></p>
+                    <span data-num="2"></span>
+                </div>
             </div>
             <div class="fly_result__line">
-                <p>Объем стенового блока для строительства перегородочных стен толщиной <ins></ins></p>
-                <span data-num="3"></span>
+                <img src="./img/2_result.png" alt="">
+                <div class="fly_result__line-text">
+                    <p>Объем стенового блока для строительства перегородочных стен толщиной <ins></ins></p>
+                    <span data-num="3"></span>
+                </div>
             </div>
             <div class="fly_result__line">
-                <p>Объем стенового блока для строительства перегородочных стен толщиной <ins></ins></p>
-                <span data-num="4"></span>
+                <img src="./img/2_result.png" alt="">
+                <div class="fly_result__line-text">
+                    <p>Объем стенового блока для строительства перегородочных стен толщиной <ins></ins></p>
+                    <span data-num="4"></span>
+                </div>
             </div>
             <div class="fly_result__line">
-                <p>Объем утеплителя, для утепления площади стен <ins></ins> м²</p>
-                <span data-num="5"></span>
+                <img src="./img/3_result.png" alt="">
+                <div class="fly_result__line-text">
+                    <p>Объем утеплителя, для утепления площади стен <ins></ins> м²</p>
+                    <span data-num="5"></span>
+                </div>
             </div>
             <div class="fly_result__line">
-                <p>Объем клея для стеновых блоков, для внешних стен, объемом <ins></ins></p>
-                <span data-num="6"></span>
+                <img src="./img/4_result.png" alt="">
+                <div class="fly_result__line-text">
+                    <p>Объем клея для стеновых блоков, для внешних стен, объемом <ins></ins></p>
+                    <span data-num="6"></span>
+                </div>
             </div>
             <div class="fly_result__line">
-                <p>Объем клея для стеновых блоков, для перегородочных стен <ins></ins></p>
-                <span data-num="7"></span>
+                <img src="./img/4_result.png" alt="">
+                <div class="fly_result__line-text">
+                    <p>Объем клея для стеновых блоков, для перегородочных стен <ins></ins></p>
+                    <span data-num="7"></span>
+                </div>
             </div>
             <div class="fly_result__line">
-                <p>Количество кладочного раствора для лицевого кирпича, для площади стен <ins></ins></p>
-                <span class="fly_result__line-double" data-num="8">
+                <img src="./img/5_result.png" alt="">
+                <div class="fly_result__line-text">
+                    <p>Количество кладочного раствора для лицевого кирпича, для площади стен объемом <ins></ins>м³</p>
+                    <span class="fly_result__line-double" data-num="8">
+                        <ins class="fly_result__line-cement"></ins>
+                        <ins class="fly_result__line-pesok"></ins>
+                    </span>
+                </div>
+            </div>
+            <div class="fly_result__line">
+                <img src="./img/6_result.png" alt="">
+                <div class="fly_result__line-text">
+                    <p>Для строительства цоколя потребуется <ins class="fly_result__line-1"></ins> м³ кирпича (<ins class="fly_result__line-2"></ins> шт.)</p>
+                    <span data-num="9"></span>
+                </div>
+            </div>
+            <div class="fly_result__line">
+                <img src="./img/7_result.png" alt="">
+                <div class="fly_result__line-text">
+                    <p>Количество кирпича для строительства основных стен цоколя <ins></ins> м³ кирпича</p>
+                    <span data-num="10"></span>
+                </div>
+            </div>
+            <div class="fly_result__line">
+                <img src="./img/5_result.png" alt="">
+                <div class="fly_result__line-text">
+                    <p>Количество кладочного раствора для цокольного кирпича, объемом <ins></ins> м³</p>
+                    <span class="fly_result__line-double" data-num="11">
                     <ins class="fly_result__line-cement"></ins>
                     <ins class="fly_result__line-pesok"></ins>
                 </span>
-            </div>
-            <div class="fly_result__line">
-                <p>Для строительства цоколя потребуется <ins class="fly_result__line-1"></ins> м³ кирпича</p>
-                <span data-num="9"></span>
-            </div>
-            <div class="fly_result__line">
-                <p>Количество кирпича для строительства основных стен цоколя <ins></ins> м³ кирпича</p>
-                <span data-num="10"></span>
-            </div>
-            <div class="fly_result__line">
-                <p>Количество кладочного раствора для цокольного кирпича, объемом <ins></ins> м³</p>
-                <span class="fly_result__line-double" data-num="11">
-                    <ins class="fly_result__line-cement"></ins>
-                    <ins class="fly_result__line-pesok"></ins>
-                </span>
+                </div>
             </div>
         </div>
     </div>
