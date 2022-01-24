@@ -139,7 +139,7 @@
 
                     </div>
                 </div>
-                <div class="calculator_frame__checkbox" data-mouse-picture="5_stena">
+                <div class="calculator_frame__checkbox" data-mouse-picture="kirpich_cokol">
                     <p>Рассчитайте кирпич для цоколя</p>
                     <div class="calculator_frame__checkbox-input">
                         <input type="radio" id="yes_pereg" name="pereg" class="radio_anon" value="yes">
@@ -152,12 +152,12 @@
                         <p>Нет</p>
                     </div>
                 </div>
-                <div class="next_block_checkbox">
-                    <div class="calculator_frame__label" data-rass="dlina_sten_cokol">
+                <div class="next_block_checkbox" data-mouse="true">
+                    <div class="calculator_frame__label" data-rass="dlina_sten_cokol" data-mouse-picture="kirpich_cokol">
                         <input type="text" name="dlina_sten_cokol" id="dlina_sten_cokol" class="calculator_frame__input_text">
                         <label for="dlina_sten_cokol">Введите длину стен для кладки цокольного кирпича, м</label>
                     </div>
-                    <div class="calculator_frame__select-box">
+                    <div class="calculator_frame__select-box" data-mouse-picture="kirpich_cokol">
                         <div class="calculator_frame__select" data-rass="tolshina_steny_cokol">
                             <p></p>
                             <ul>
@@ -172,7 +172,7 @@
                         </div>
                         <span>Выберите толщину стены кирпичной кладки для цоколя, мм</span>
                     </div>
-                    <div class="calculator_frame__select-box">
+                    <div class="calculator_frame__select-box" data-mouse-picture="kirpich_cokol">
                         <div class="calculator_frame__select" data-rass="vysota_cokolya">
                             <p></p>
                             <ul>
@@ -193,7 +193,7 @@
                         </div>
                         <span>Выберите высоту цокольной стены (от фундамента до блока)</span>
                     </div>
-                    <div class="calculator_frame__checkbox" data-mouse-picture="5_stena">
+                    <div class="calculator_frame__checkbox" data-mouse-picture="stena_cokol">
                         <p>Будут ли внутренние стены у цоколя?</p>
                         <div class="calculator_frame__checkbox-input">
                             <input type="radio" id="yes_vn" name="vnut_steny" class="radio_anon" value="yes">
@@ -207,11 +207,11 @@
                         </div>
                     </div>
                     <div class="next_block_checkbox">
-                        <div class="calculator_frame__label" data-rass="vnut_dlina_steny_cokol">
+                        <div class="calculator_frame__label" data-rass="vnut_dlina_steny_cokol" data-mouse-picture="stena_cokol">
                             <input type="text" name="vnut_dlina_steny_cokol" id="vnut_dlina_steny_cokol" class="calculator_frame__input_text">
                             <label for="vnut_dlina_steny_cokol">Введите длину стены, м</label>
                         </div>
-                        <div class="calculator_frame__select-box">
+                        <div class="calculator_frame__select-box" data-mouse-picture="stena_cokol">
                             <div class="calculator_frame__select" data-rass="vnut_tolshina_steny_cokol">
                                 <p></p>
                                 <ul>
@@ -234,6 +234,7 @@
         </div>
         <img class="calculator_frame__parentImg" src="./img/dom1.jpg" alt="">
         <div class="fly_result">
+            <h2>Результат</h2>
             <div class="fly_result__line">
                 <img src="./img/1_result.png" alt="">
                 <div class="fly_result__line-text">
@@ -296,15 +297,19 @@
             <div class="fly_result__line">
                 <img src="./img/6_result.png" alt="">
                 <div class="fly_result__line-text">
-                    <p>Для строительства цоколя потребуется <ins class="fly_result__line-1"></ins> м³ кирпича (<ins class="fly_result__line-2"></ins> шт.)</p>
-                    <span data-num="9"></span>
+                    <p>Количество кирпича для строительства цоколя потребуется <ins class="fly_result__line-1"></ins> м³ кирпича</p>
+                    <span data-num="9">
+                        <ins class="fly_result__line-2"></ins>  <p>(с учетом запаса 5%)</p>
+                    </span>
                 </div>
             </div>
             <div class="fly_result__line">
                 <img src="./img/7_result.png" alt="">
                 <div class="fly_result__line-text">
-                    <p>Количество кирпича для строительства основных стен цоколя <ins></ins> м³ кирпича</p>
-                    <span data-num="10"></span>
+                    <p>Количество кирпича для строительства внутренних стен цоколя <ins class="fly_result__line-1"></ins> м³ кирпича</p>
+                    <span data-num="10">
+                        <ins class="fly_result__line-2"></ins>  <p>(с учетом запаса 5%)</p>
+                    </span>
                 </div>
             </div>
             <div class="fly_result__line">
