@@ -1,6 +1,8 @@
-function addition_percent(number, percent) {
+function addition_percent(number, percent, numberInFixed) {
     let tempoary_number = (number / 100) * percent;
-    return +(tempoary_number + number).toFixed(1);
+    let number_param = numberInFixed !== undefined ? numberInFixed : 1;
+    console.log(number_param);
+    return +(tempoary_number + number).toFixed(number_param);
 }
 
 document.querySelector('.calculator_frame__submit').addEventListener('click', function(e) {
@@ -126,7 +128,7 @@ document.querySelector('.calculator_frame__submit').addEventListener('click', fu
                 if (!isNaN(dlina_sten_cokol) && !isNaN(tolshina_sten_cokol) && !isNaN(vysota_cokolya)) {
                     let sum_cube = dlina_sten_cokol * tolshina_sten_cokol * vysota_cokolya;
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').querySelector('.fly_result__line-1').innerHTML = sum_cube.toFixed(1);
-                    document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').querySelector('.fly_result__line-2').innerHTML = (sum_cube * 394).toFixed(0);
+                    document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').querySelector('.fly_result__line-2').innerHTML = addition_percent(sum_cube * 394, 5, 0) + ' шт.';
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').style.display = 'flex';
                 } else {
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').style.display = 'none';
@@ -135,7 +137,8 @@ document.querySelector('.calculator_frame__submit').addEventListener('click', fu
             case 10:
                 if (!isNaN(dlina_sten_cokol) && !isNaN(tolshina_sten_cokol) && !isNaN(vysota_cokolya) && !isNaN(vnut_dlina_steny_cokol) && !isNaN(vnut_tolshina_steny_cokol)) {
                     let sum_cube_vnut = (dlina_sten_cokol * tolshina_sten_cokol * vysota_cokolya) + (vnut_tolshina_steny_cokol * vnut_dlina_steny_cokol * vysota_cokolya);
-                    document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').querySelector('ins').innerHTML = sum_cube_vnut.toFixed(1);
+                    document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').querySelector('.fly_result__line-1').innerHTML = sum_cube_vnut.toFixed(1);
+                    document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').querySelector('.fly_result__line-2').innerHTML = addition_percent(sum_cube_vnut * 394, 5, 0) + ' шт.';
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').style.display = 'flex';
                 } else {
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').style.display = 'none';
@@ -144,7 +147,7 @@ document.querySelector('.calculator_frame__submit').addEventListener('click', fu
             case 11:
                 if (!isNaN(dlina_sten_cokol) && !isNaN(tolshina_sten_cokol) && !isNaN(vysota_cokolya) && !isNaN(vnut_dlina_steny_cokol) && !isNaN(vnut_tolshina_steny_cokol)) {
                     let sum_cube_vnut_r = (dlina_sten_cokol * tolshina_sten_cokol * vysota_cokolya) + (vnut_tolshina_steny_cokol * vnut_dlina_steny_cokol * vysota_cokolya);
-                    document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').querySelector('p ins').innerHTML = sum_cube_vnut_r.toFixed(1);
+                    document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').querySelector('p ins').innerHTML = (dlina_sten_cokol * tolshina_sten_cokol * vysota_cokolya).toFixed(1);
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').querySelector('.fly_result__line-cement').innerHTML = +(addition_percent(sum_cube_vnut_r * 100, 5)) + ' кг. цемента<p>(с учетом запаса 5%)</p>';
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').querySelector('.fly_result__line-pesok').innerHTML = +(addition_percent(sum_cube_vnut_r * 400, 5)) + ' кг. песка<p>(с учетом запаса 5%)</p>';
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').style.display = 'flex';
@@ -196,25 +199,36 @@ document.querySelector('.calculator_frame').addEventListener('change', function(
 });
 
 let path = 'img/';
-document.querySelector('.calculator_frame form').addEventListener('mouseover', function(e) {
-    // if (e.target.tagName === 'DIV' && e.target.getAttribute('data-mouse-picture') && !e.target.closest('.next_block_checkbox') ||
-    //     e.target.tagName === 'SPAN' && e.target.closest('.calculator_frame__select-box') && !e.target.closest('.next_block_checkbox') ||
-    //     e.target.classList.contains('calculator_frame__select') && !e.target.closest('.next_block_checkbox') ||
-    //     e.target.tagName === 'INPUT' && !e.target.closest('.next_block_checkbox') ||
-    //     e.target.tagName === 'LABEL' && !e.target.closest('.next_block_checkbox')) {
 
-    if ((e.target.tagName === 'DIV' && e.target.getAttribute('data-mouse-picture') ||
-            e.target.classList.contains('calculator_frame__select-box') ||
-            e.target.classList.contains('calculator_frame__input_text') ||
-            e.target.classList.contains('calculator_frame__label') ||
-            e.target.classList.contains('calculator_frame__checkbox') ||
-            (e.target.tagName === 'LABEL' && !e.target.closest('.calculator_frame__checkbox')) ||
-            e.target.tagName === 'SPAN') && !e.target.closest('.next_block_checkbox')) {
-        document.querySelectorAll('.calculator_frame form > div').forEach(i => i.classList.remove('active'));
-        e.target.classList.add('active')
-        let src = (e.target.tagName === 'SPAN' && e.target.closest('.calculator_frame__select-box') || e.target.tagName === 'LABEL' || e.target.tagName === 'INPUT' || e.target.classList.contains('calculator_frame__select')) ? e.target.parentNode.getAttribute('data-mouse-picture') : e.target.getAttribute('data-mouse-picture');
-        (e.target.tagName === 'SPAN' && e.target.closest('.calculator_frame__select-box') || e.target.tagName === 'LABEL' || e.target.tagName === 'INPUT' || e.target.classList.contains('calculator_frame__select')) ? e.target.parentNode.classList.add('active'): e.target.classList.add('active');
+
+document.querySelectorAll('.calculator_frame form div[data-mouse-picture]').forEach(i => {
+    i.addEventListener('mouseover', function(e) {
+        document.querySelectorAll('.calculator_frame form div').forEach(i => i.classList.remove('active'));
+        i.classList.add('active');
+        let src = i.getAttribute('data-mouse-picture');
         document.querySelector('.calculator_frame__parentImg').setAttribute('src', `${path + src + '.jpg'}`);
-    }
-
+    });
 });
+
+// document.querySelector('.calculator_frame form').addEventListener('mouseover', function(e) {
+//     // if (e.target.tagName === 'DIV' && e.target.getAttribute('data-mouse-picture') && !e.target.closest('.next_block_checkbox') ||
+//     //     e.target.tagName === 'SPAN' && e.target.closest('.calculator_frame__select-box') && !e.target.closest('.next_block_checkbox') ||
+//     //     e.target.classList.contains('calculator_frame__select') && !e.target.closest('.next_block_checkbox') ||
+//     //     e.target.tagName === 'INPUT' && !e.target.closest('.next_block_checkbox') ||
+//     //     e.target.tagName === 'LABEL' && !e.target.closest('.next_block_checkbox')) {
+
+//     if ((e.target.tagName === 'DIV' && e.target.getAttribute('data-mouse-picture') ||
+//             e.target.classList.contains('calculator_frame__select-box') ||
+//             e.target.classList.contains('calculator_frame__input_text') ||
+//             e.target.classList.contains('calculator_frame__label') ||
+//             e.target.classList.contains('calculator_frame__checkbox') ||
+//             (e.target.tagName === 'LABEL' && !e.target.closest('.calculator_frame__checkbox')) ||
+//             e.target.tagName === 'SPAN') && !e.target.closest('.next_block_checkbox') || (e.target.closest('.next_block_checkbox') && e.target.closest('.next_block_checkbox').getAttribute('data-mouse'))) {
+//         document.querySelectorAll('.calculator_frame form div').forEach(i => i.classList.remove('active'));
+//         e.target.classList.add('active')
+//         let src = (e.target.tagName === 'SPAN' && e.target.closest('.calculator_frame__select-box') || e.target.tagName === 'LABEL' || e.target.tagName === 'INPUT' || e.target.classList.contains('calculator_frame__select')) ? e.target.parentNode.getAttribute('data-mouse-picture') : e.target.getAttribute('data-mouse-picture');
+//         (e.target.tagName === 'SPAN' && e.target.closest('.calculator_frame__select-box') || e.target.tagName === 'LABEL' || e.target.tagName === 'INPUT' || e.target.classList.contains('calculator_frame__select')) ? e.target.parentNode.classList.add('active'): e.target.classList.add('active');
+//         document.querySelector('.calculator_frame__parentImg').setAttribute('src', `${path + src + '.jpg'}`);
+//     }
+
+// });
