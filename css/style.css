@@ -290,6 +290,11 @@ body {
           align-items: center;
 }
 
+.calculator_frame__checkbox.active {
+  -webkit-box-shadow: 0px 1px 3px 1px #f87303;
+          box-shadow: 0px 1px 3px 1px #f87303;
+}
+
 .calculator_frame__checkbox > p {
   width: 100%;
   display: -webkit-box;
@@ -456,6 +461,13 @@ body {
   -webkit-box-ordinal-group: 3;
       -ms-flex-order: 2;
           order: 2;
+  margin-left: 30px;
+}
+
+.fly_result h2 {
+  text-align: center;
+  color: #f87303;
+  margin-bottom: 40px;
 }
 
 .fly_result__line {
