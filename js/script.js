@@ -1,9 +1,32 @@
 function addition_percent(number, percent, numberInFixed) {
     let tempoary_number = (number / 100) * percent;
     let number_param = numberInFixed !== undefined ? numberInFixed : 1;
-    console.log(number_param);
     return +(tempoary_number + number).toFixed(number_param);
 }
+
+
+function getOffset(el) {
+    el = document.querySelector(el).getBoundingClientRect();
+    return el.top + window.scrollY;
+}
+
+
+document.addEventListener('scroll', function(e) {
+    let btn = getOffset('.calculator_frame__submit') + document.querySelector('.calculator_frame__submit').offsetHeight;
+    let img = getOffset('.calculator_frame__parentImg') + document.querySelector('.calculator_frame__parentImg').offsetHeight;
+
+    if (btn <= img) {
+        document.querySelector('.calculator_frame__parentImg').style.cssText = `
+            position:relative;
+            top: ${(getOffset('.calculator_frame__submit') - document.querySelector('.calculator_frame__parentImg').offsetHeight) / 2}px
+        `;
+    } else {
+        document.querySelector('.calculator_frame__parentImg').style = null;
+    }
+    if (document.querySelector('.calculator_frame__submit').getBoundingClientRect().top / 2 > window.scrollY) {
+        document.querySelector('.calculator_frame__parentImg').style = null;
+    }
+});
 
 document.querySelector('.calculator_frame__submit').addEventListener('click', function(e) {
     e.preventDefault();
@@ -46,7 +69,7 @@ document.querySelector('.calculator_frame__submit').addEventListener('click', fu
             case 3:
                 if (!isNaN(addition_percent(ploshad_steny * tolshina_steny, 5))) {
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').innerHTML = addition_percent(ploshad_steny * tolshina_steny, 5) + ' м³<p>(с учетом запаса 5%)</p>';
-                    document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').querySelector('ins').innerText = ploshad + ' м²';;
+                    document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').querySelector('ins').innerText = ploshad + ' мм';;
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').style.display = 'flex';
                 } else {
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').style.display = 'none';
@@ -74,7 +97,7 @@ document.querySelector('.calculator_frame__submit').addEventListener('click', fu
                 let objem_bloka = parseFloat(document.querySelector('.fly_result__line span[data-num="2"]').innerText);
                 if (!isNaN(objem_bloka) && objem_bloka !== '') {
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').innerHTML = +((objem_bloka * 30) / 25).toFixed(1) + ' упаковок по 25 кг<p>(с учетом запаса 5%)</p>';
-                    document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').querySelector('ins').innerText = objem_bloka + ' м²';
+                    document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').querySelector('ins').innerText = objem_bloka + ' м³';
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').style.display = 'flex';
                 } else {
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').style.display = 'none';
@@ -85,7 +108,7 @@ document.querySelector('.calculator_frame__submit').addEventListener('click', fu
                 let obj_bloka_3 = parseFloat(document.querySelector('.fly_result__line span[data-num="4"]').innerText);
                 if ((!isNaN(obj_bloka_2) && !isNaN(obj_bloka_3)) && (obj_bloka_2 !== '' && obj_bloka_3 !== '')) {
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').innerHTML = +(((Number(obj_bloka_2) + Number(obj_bloka_3)) * 30) / 25).toFixed(1) + ' упаковок по 25 кг<p>(с учетом запаса 5%)</p>';
-                    document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').querySelector('ins').innerText = Number(obj_bloka_2) + Number(obj_bloka_3) + ' м²';;
+                    document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').querySelector('ins').innerText = Number(obj_bloka_2) + Number(obj_bloka_3) + ' м³';
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').style.display = 'flex';
                 } else {
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').style.display = 'none';
@@ -136,7 +159,7 @@ document.querySelector('.calculator_frame__submit').addEventListener('click', fu
                 break;
             case 10:
                 if (!isNaN(dlina_sten_cokol) && !isNaN(tolshina_sten_cokol) && !isNaN(vysota_cokolya) && !isNaN(vnut_dlina_steny_cokol) && !isNaN(vnut_tolshina_steny_cokol)) {
-                    let sum_cube_vnut = (dlina_sten_cokol * tolshina_sten_cokol * vysota_cokolya) + (vnut_tolshina_steny_cokol * vnut_dlina_steny_cokol * vysota_cokolya);
+                    let sum_cube_vnut = vnut_tolshina_steny_cokol * vnut_dlina_steny_cokol * vysota_cokolya;
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').querySelector('.fly_result__line-1').innerHTML = sum_cube_vnut.toFixed(1);
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').querySelector('.fly_result__line-2').innerHTML = addition_percent(sum_cube_vnut * 394, 5, 0) + ' шт.';
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').style.display = 'flex';
@@ -147,7 +170,7 @@ document.querySelector('.calculator_frame__submit').addEventListener('click', fu
             case 11:
                 if (!isNaN(dlina_sten_cokol) && !isNaN(tolshina_sten_cokol) && !isNaN(vysota_cokolya) && !isNaN(vnut_dlina_steny_cokol) && !isNaN(vnut_tolshina_steny_cokol)) {
                     let sum_cube_vnut_r = (dlina_sten_cokol * tolshina_sten_cokol * vysota_cokolya) + (vnut_tolshina_steny_cokol * vnut_dlina_steny_cokol * vysota_cokolya);
-                    document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').querySelector('p ins').innerHTML = (dlina_sten_cokol * tolshina_sten_cokol * vysota_cokolya).toFixed(1);
+                    document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').querySelector('p ins').innerHTML = sum_cube_vnut_r.toFixed(1);
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').querySelector('.fly_result__line-cement').innerHTML = +(addition_percent(sum_cube_vnut_r * 100, 5)) + ' кг. цемента<p>(с учетом запаса 5%)</p>';
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').querySelector('.fly_result__line-pesok').innerHTML = +(addition_percent(sum_cube_vnut_r * 400, 5)) + ' кг. песка<p>(с учетом запаса 5%)</p>';
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').style.display = 'flex';
