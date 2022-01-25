@@ -82,11 +82,11 @@
                     </div>
                 </div>
                 <div class="next_block_checkbox">
-                    <div class="calculator_frame__label" data-rass="ploshad_steny">
+                    <div class="calculator_frame__label" data-rass="ploshad_steny" data-mouse-picture="5_stena">
                         <input type="text" name="ploshad_steny" id="calculator_ploshad" class="calculator_frame__input_text">
                         <label for="calculator_ploshad">Введите площадь перегородочной стены, за вычетом проемов, м²</label>
                     </div>
-                    <div class="calculator_frame__select-box">
+                    <div class="calculator_frame__select-box" data-mouse-picture="5_stena">
                         <div class="calculator_frame__select" data-rass="tolshina_steny">
                             <p></p>
                             <ul>
@@ -102,7 +102,7 @@
                         </div>
                         <span>Выберите толщину перегородочной стены, мм</span>
                     </div>
-                    <div class="calculator_frame__checkbox">
+                    <div class="calculator_frame__checkbox" data-mouse-picture="5_stena">
                         <p>Добавить еще одну перегородочную стену другой толщиной</p>
                         <div class="calculator_frame__checkbox-input">
                             <input type="radio" id="yes_t" name="pereg_t" class="radio_anon" value="yes">
@@ -116,11 +116,11 @@
                         </div>
                     </div>
                     <div class="next_block_checkbox">
-                        <div class="calculator_frame__label" data-rass="ploshad_steny_2">
+                        <div class="calculator_frame__label" data-rass="ploshad_steny_2" data-mouse-picture="5_stena">
                             <input type="text" name="ploshad_steny_2" id="calculator_ploshad" class="calculator_frame__input_text">
                             <label for="calculator_ploshad">Введите площадь перегородочной стены, за вычетом проемов, м²</label>
                         </div>
-                        <div class="calculator_frame__select-box">
+                        <div class="calculator_frame__select-box" data-mouse-picture="5_stena">
                             <div class="calculator_frame__select" data-rass="tolshina_steny_2">
                                 <p></p>
                                 <ul>
@@ -233,40 +233,106 @@
         </div>
         <img class="calculator_frame__parentImg" src="./img/dom1.jpg" alt="">
         <div class="fly_result">
-            <h2>Результат</h2>
+            <div class="fly_result__header">
+                <h2>Результат</h2>
+                <p class="fly_result__header-material">Введите стоимость матреиала <br> <span>(с учетом доставки и разгрузки на объект)<br> (при расчете учитывает запас матрериала)</span></p>
+                <p class="fly_result__header-jobs">
+                    Введите стоимость строительных работ<br> <span>(без учета расходов на инструменты)<br> (при расчете не учитывает запас матрериала)</span>
+                </p>
+            </div>
             <div class="fly_result__line">
-                <img src="./img/1_result.png" alt="">
-                <div class="fly_result__line-text">
-                    <p>Количество кирпича для лицевой части, площадью стен <ins></ins> м²</p>
-                    <span data-num="1"></span>
+                <div class="fly_result__line-section">
+                    <img src="./img/1_result.png" alt="">
+                    <div class="fly_result__line-text">
+                        <p>Количество кирпича для лицевой части, площадью стен <ins></ins> м²</p>
+                        <span data-num="1"></span>
+                    </div>
+                </div>
+                <div class="fly_result__line-input">
+                    <div class="input-1-material">
+                        <input type="text" name="input-1-material">
+                        <label for="input-1-material">введите стоимость за 1 шт кирпича</label>
+                    </div>
+                    <div class="input-1-jobs">
+                        <input type="text" name="input-1-jobs">
+                        <label for="input-1-jobs">введите стоимость за 1 м² кладки</label>
+                    </div>
                 </div>
             </div>
             <div class="fly_result__line">
-                <img src="./img/2_result.png" alt="">
-                <div class="fly_result__line-text">
-                    <p>Объем стенового блока для строительства внешних стен, толщиной <ins></ins></p>
-                    <span data-num="2"></span>
+                <div class="fly_result__line-section">
+                    <img src="./img/2_result.png" alt="">
+                    <div class="fly_result__line-text">
+                        <p>Объем стенового блока для строительства внешних стен, толщиной <ins></ins></p>
+                        <span data-num="2"></span>
+                    </div>
+                </div>
+                <div class="fly_result__line-input">
+                    <div class="input-1-material">
+                        <input type="text" name="input-2-material">
+                        <label for="input-2-material">введите стоимость за 1 м³</label>
+                    </div>
+                    <div class="input-1-jobs">
+                        <input type="text" name="input-2-jobs">
+                        <label for="input-2-jobs">введите стоимость за 1 м³</label>
+                    </div>
                 </div>
             </div>
             <div class="fly_result__line">
-                <img src="./img/2_result.png" alt="">
-                <div class="fly_result__line-text">
-                    <p>Объем стенового блока для строительства перегородочных стен толщиной <ins></ins></p>
-                    <span data-num="3"></span>
+                <div class="fly_result__line-section">
+                    <img src="./img/2_result.png" alt="">
+                    <div class="fly_result__line-text">
+                        <p>Объем стенового блока для строительства перегородочных стен толщиной <ins></ins></p>
+                        <span data-num="3"></span>
+                    </div>
+                </div>
+                <div class="fly_result__line-input">
+                    <div class="input-1-material">
+                        <input type="text" name="input-3-material">
+                        <label for="input-3-material">введите стоимость за 1 м³</label>
+                    </div>
+                    <div class="input-1-jobs">
+                        <input type="text" name="input-3-jobs">
+                        <label for="input-3-jobs">введите стоимость за 1 м³</label>
+                    </div>
                 </div>
             </div>
             <div class="fly_result__line">
-                <img src="./img/2_result.png" alt="">
-                <div class="fly_result__line-text">
-                    <p>Объем стенового блока для строительства перегородочных стен толщиной <ins></ins></p>
-                    <span data-num="4"></span>
+                <div class="fly_result__line-section">
+                    <img src="./img/2_result.png" alt="">
+                    <div class="fly_result__line-text">
+                        <p>Объем стенового блока для строительства перегородочных стен толщиной <ins></ins></p>
+                        <span data-num="4"></span>
+                    </div>
+                </div>
+                <div class="fly_result__line-input">
+                    <div class="input-1-material">
+                        <input type="text" name="input-4-material">
+                        <label for="input-4-material">введите стоимость за 1 м³</label>
+                    </div>
+                    <div class="input-1-jobs">
+                        <input type="text" name="input-4-jobs">
+                        <label for="input-4-jobs">введите стоимость за 1 м³</label>
+                    </div>
                 </div>
             </div>
             <div class="fly_result__line">
-                <img src="./img/3_result.png" alt="">
-                <div class="fly_result__line-text">
-                    <p>Объем утеплителя, для утепления площади стен <ins></ins> м²</p>
-                    <span data-num="5"></span>
+                <div class="fly_result__line-section">
+                    <img src="./img/3_result.png" alt="">
+                    <div class="fly_result__line-text">
+                        <p>Объем утеплителя, для утепления площади стен <ins></ins> м²</p>
+                        <span data-num="5"></span>
+                    </div>
+                </div>
+                <div class="fly_result__line-input">
+                    <div class="input-1-material">
+                        <input type="text" name="input-5-material">
+                        <label for="input-5-material">введите стоимость за 1 м³</label>
+                    </div>
+                    <div class="input-1-jobs">
+                        <input type="text" name="input-5-jobs">
+                        <label for="input-5-jobs">введите стоимость за 1 м³</label>
+                    </div>
                 </div>
             </div>
             <div class="fly_result__line">
@@ -296,7 +362,7 @@
             <div class="fly_result__line">
                 <img src="./img/6_result.png" alt="">
                 <div class="fly_result__line-text">
-                    <p>Количество кирпича для строительства цоколя потребуется <ins class="fly_result__line-1"></ins> м³ кирпича</p>
+                    <p>Количество кирпича для строительства основных стен цоколя потребуется <ins class="fly_result__line-1"></ins> м³ кирпича</p>
                     <span data-num="9">
                         <ins class="fly_result__line-2"></ins>  <p>(с учетом запаса 5%)</p>
                     </span>
@@ -316,16 +382,15 @@
                 <div class="fly_result__line-text">
                     <p>Количество кладочного раствора для цокольного кирпича, объемом <ins></ins> м³</p>
                     <span class="fly_result__line-double" data-num="11">
-                    <ins class="fly_result__line-cement"></ins>
-                    <ins class="fly_result__line-pesok"></ins>
-                </span>
+                            <ins class="fly_result__line-cement"></ins>
+                            <ins class="fly_result__line-pesok"></ins>
+                        </span>
                 </div>
             </div>
+            <button>Рассчитать стоимость</button>
         </div>
-    </div>
 
 
-
-    <script src="js/script.js"></script>
+        <script src="js/script.js"></script>
 
 </html>
