@@ -5,10 +5,64 @@ function addition_percent(number, percent, numberInFixed) {
 }
 
 
+function delimiter_number(number) {
+    console.log((parseInt(number) * 10).toLocaleString('ru-RU') === 'не число');
+    return ((parseInt(number) * 10).toLocaleString('ru-RU') !== 'не число') ?
+        (parseInt(number) * 10).toLocaleString('ru-RU') : 0;
+
+
+}
+
+
+
 function getOffset(el) {
     el = document.querySelector(el).getBoundingClientRect();
     return el.top + window.scrollY;
 }
+
+let price_material = [],
+    price_jobs = [];
+
+function receiving_price() {
+    price_material.length = 0;
+    price_jobs.length = 0;
+    [...document.querySelectorAll('.input-1-material .fly_result__line-input-price span')].filter(i => {
+        if (i.innerText !== '') {
+            price_material.push(Number(i.innerText.replace(/\s/g, '')));
+        }
+    });
+
+    [...document.querySelectorAll('.input-1-jobs .fly_result__line-input-price span')].filter(i => {
+        if (i.innerText !== '') {
+            price_jobs.push(Number(i.innerText.replace(/\s/g, '')));
+        }
+    });
+
+    let result_material = price_material.reduce((sum, current) => sum + current, 0);
+    let result_jobs = price_jobs.reduce((sum, current) => sum + current, 0);
+    document.querySelector('.result_total-all__materialgs').innerText = delimiter_number(result_material);
+    document.querySelector('.result_total-jobs span').innerText = delimiter_number(result_jobs);
+    document.querySelector('.result_total-all__jobs').innerText = delimiter_number(result_jobs + result_material);
+}
+document.querySelector('.fly_result').addEventListener('input', function(e) {
+    if (e.target.tagName === 'INPUT') {
+        let value = e.target.getAttribute('data-value');
+        if (e.target.closest('.input-section-parent:not(.fl-section-input)')) {
+            e.target.closest('.input-section-parent').querySelector('.fly_result__line-input-price span').innerText = delimiter_number(value * e.target.value);
+            if (!e.target.closest('.input-section-parent').querySelector('.fly_result__line-input-price').getAttribute('style')) {
+                e.target.closest('.input-section-parent').querySelector('.fly_result__line-input-price').style.display = 'flex';
+                document.querySelector('.result_total').style.display = 'grid';
+            }
+        } else {
+            e.target.closest('.input-section-box').querySelector('.fly_result__line-input-price span').innerText = delimiter_number(value * e.target.value);
+            if (!e.target.closest('.input-section-box').querySelector('.fly_result__line-input-price').getAttribute('style')) {
+                e.target.closest('.input-section-box').querySelector('.fly_result__line-input-price').style.display = 'flex'
+            }
+        }
+        receiving_price();
+    }
+});
+
 
 
 document.addEventListener('scroll', function(e) {
@@ -30,6 +84,7 @@ document.addEventListener('scroll', function(e) {
 
 document.querySelector('.calculator_frame__submit').addEventListener('click', function(e) {
     e.preventDefault();
+
     document.querySelector('.fly_result').style.display = 'block';
     let ploshad = document.querySelector('div[data-rass="ploshad"] input').value !== '' ? document.querySelector('div[data-rass="ploshad"] input').value : 'no';
     let tolshina = document.querySelector('div[data-rass="tolshina"] p').dataset.result ? document.querySelector('div[data-rass="tolshina"] p').dataset.result : 'no';
@@ -53,6 +108,10 @@ document.querySelector('.calculator_frame__submit').addEventListener('click', fu
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').innerHTML = addition_percent(ploshad * kirpich, 5) + ' шт<p> (с учетом запаса 5%)</p>';
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').querySelector('ins').innerText = ploshad;
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').style.display = 'flex';
+                    document.querySelector('.fly_result__line-input input[name="input-' + i + '-material"]').setAttribute('data-value', addition_percent(ploshad * kirpich, 5));
+                    document.querySelector('.fly_result__line-input input[name="input-' + i + '-jobs"]').setAttribute('data-value', Number(ploshad));
+                    document.querySelector('.fly_result__line-input input[name="input-' + i + '-material"]').closest('.input-section-parent').querySelector('.fly_result__line-input-price span').innerText = delimiter_number(parseInt(document.querySelector('.fly_result__line-input input[name="input-' + i + '-material"]').value) * Number(document.querySelector('.fly_result__line-input input[name="input-' + i + '-material"]').dataset.value));
+                    document.querySelector('.fly_result__line-input input[name="input-' + i + '-jobs"]').closest('.input-section-parent').querySelector('.fly_result__line-input-price span').innerText = delimiter_number(parseInt(document.querySelector('.fly_result__line-input input[name="input-' + i + '-jobs"]').value) * Number(document.querySelector('.fly_result__line-input input[name="input-' + i + '-jobs"]').dataset.value));
                 } else {
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').style.display = 'none';
                 }
@@ -62,6 +121,10 @@ document.querySelector('.calculator_frame__submit').addEventListener('click', fu
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').innerHTML = addition_percent(ploshad * tolshina, 5) + ' м³<p>(с учетом запаса 5%)</p>';
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').querySelector('ins').innerText = (tolshina * 1000) + ' мм.';
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').style.display = 'flex';
+                    document.querySelector('.fly_result__line-input input[name="input-' + i + '-material"]').setAttribute('data-value', addition_percent(ploshad * tolshina, 5));
+                    document.querySelector('.fly_result__line-input input[name="input-' + i + '-jobs"]').setAttribute('data-value', Number(ploshad * tolshina));
+                    document.querySelector('.fly_result__line-input input[name="input-' + i + '-material"]').closest('.input-section-parent').querySelector('.fly_result__line-input-price span').innerText = delimiter_number(parseInt(document.querySelector('.fly_result__line-input input[name="input-' + i + '-material"]').value) * Number(document.querySelector('.fly_result__line-input input[name="input-' + i + '-material"]').dataset.value));
+                    document.querySelector('.fly_result__line-input input[name="input-' + i + '-jobs"]').closest('.input-section-parent').querySelector('.fly_result__line-input-price span').innerText = delimiter_number(parseInt(document.querySelector('.fly_result__line-input input[name="input-' + i + '-jobs"]').value) * Number(document.querySelector('.fly_result__line-input input[name="input-' + i + '-jobs"]').dataset.value));
                 } else {
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').style.display = 'none';
                 }
@@ -71,6 +134,10 @@ document.querySelector('.calculator_frame__submit').addEventListener('click', fu
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').innerHTML = addition_percent(ploshad_steny * tolshina_steny, 5) + ' м³<p>(с учетом запаса 5%)</p>';
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').querySelector('ins').innerText = ploshad + ' мм';;
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').style.display = 'flex';
+                    document.querySelector('.fly_result__line-input input[name="input-' + i + '-material"]').setAttribute('data-value', addition_percent(ploshad_steny * tolshina_steny, 5));
+                    document.querySelector('.fly_result__line-input input[name="input-' + i + '-jobs"]').setAttribute('data-value', Number(ploshad_steny * tolshina_steny));
+                    document.querySelector('.fly_result__line-input input[name="input-' + i + '-material"]').closest('.input-section-parent').querySelector('.fly_result__line-input-price span').innerText = delimiter_number(parseInt(document.querySelector('.fly_result__line-input input[name="input-' + i + '-material"]').value) * Number(document.querySelector('.fly_result__line-input input[name="input-' + i + '-material"]').dataset.value));
+                    document.querySelector('.fly_result__line-input input[name="input-' + i + '-jobs"]').closest('.input-section-parent').querySelector('.fly_result__line-input-price span').innerText = delimiter_number(parseInt(document.querySelector('.fly_result__line-input input[name="input-' + i + '-jobs"]').value) * Number(document.querySelector('.fly_result__line-input input[name="input-' + i + '-jobs"]').dataset.value));
                 } else {
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').style.display = 'none';
                 }
@@ -80,6 +147,10 @@ document.querySelector('.calculator_frame__submit').addEventListener('click', fu
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').innerHTML = addition_percent(ploshad_steny_2 * tolshina_steny_2, 5) + ' м³<p>(с учетом запаса 5%)</p>';
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').style.display = 'flex';
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').querySelector('ins').innerText = tolshina + ' мм.';
+                    document.querySelector('.fly_result__line-input input[name="input-' + i + '-material"]').setAttribute('data-value', addition_percent(ploshad_steny_2 * tolshina_steny_2, 5));
+                    document.querySelector('.fly_result__line-input input[name="input-' + i + '-jobs"]').setAttribute('data-value', Number(ploshad_steny_2 * tolshina_steny_2));
+                    document.querySelector('.fly_result__line-input input[name="input-' + i + '-material"]').closest('.input-section-parent').querySelector('.fly_result__line-input-price span').innerText = delimiter_number(parseInt(document.querySelector('.fly_result__line-input input[name="input-' + i + '-material"]').value) * Number(document.querySelector('.fly_result__line-input input[name="input-' + i + '-material"]').dataset.value));
+                    document.querySelector('.fly_result__line-input input[name="input-' + i + '-jobs"]').closest('.input-section-parent').querySelector('.fly_result__line-input-price span').innerText = delimiter_number(parseInt(document.querySelector('.fly_result__line-input input[name="input-' + i + '-jobs"]').value) * Number(document.querySelector('.fly_result__line-input input[name="input-' + i + '-jobs"]').dataset.value));
                 } else {
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').style.display = 'none';
                 }
@@ -89,6 +160,10 @@ document.querySelector('.calculator_frame__submit').addEventListener('click', fu
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').innerHTML = addition_percent(ploshad * uteplitel, 15) + ' м³<p>(с учетом запаса 15%)</p>';
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').querySelector('ins').innerText = ploshad;
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').style.display = 'flex';
+                    document.querySelector('.fly_result__line-input input[name="input-' + i + '-material"]').setAttribute('data-value', addition_percent(ploshad * uteplitel, 15));
+                    document.querySelector('.fly_result__line-input input[name="input-' + i + '-jobs"]').setAttribute('data-value', Number(ploshad * uteplitel));
+                    document.querySelector('.fly_result__line-input input[name="input-' + i + '-material"]').closest('.input-section-parent').querySelector('.fly_result__line-input-price span').innerText = delimiter_number(parseInt(document.querySelector('.fly_result__line-input input[name="input-' + i + '-material"]').value) * Number(document.querySelector('.fly_result__line-input input[name="input-' + i + '-material"]').dataset.value));
+                    document.querySelector('.fly_result__line-input input[name="input-' + i + '-jobs"]').closest('.input-section-parent').querySelector('.fly_result__line-input-price span').innerText = delimiter_number(parseInt(document.querySelector('.fly_result__line-input input[name="input-' + i + '-jobs"]').value) * Number(document.querySelector('.fly_result__line-input input[name="input-' + i + '-jobs"]').dataset.value));
                 } else {
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').style.display = 'none';
                 }
@@ -99,6 +174,8 @@ document.querySelector('.calculator_frame__submit').addEventListener('click', fu
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').innerHTML = +((objem_bloka * 30) / 25).toFixed(1) + ' упаковок по 25 кг<p>(с учетом запаса 5%)</p>';
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').querySelector('ins').innerText = objem_bloka + ' м³';
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').style.display = 'flex';
+                    document.querySelector('.fly_result__line-input input[name="input-' + i + '-material"]').setAttribute('data-value', +((objem_bloka * 30) / 25).toFixed(1));
+                    document.querySelector('.fly_result__line-input input[name="input-' + i + '-material"]').closest('.input-section-parent').querySelector('.fly_result__line-input-price span').innerText = delimiter_number(parseInt(document.querySelector('.fly_result__line-input input[name="input-' + i + '-material"]').value) * Number(document.querySelector('.fly_result__line-input input[name="input-' + i + '-material"]').dataset.value));
                 } else {
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').style.display = 'none';
                 }
@@ -110,6 +187,8 @@ document.querySelector('.calculator_frame__submit').addEventListener('click', fu
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').innerHTML = +(((Number(obj_bloka_2) + Number(obj_bloka_3)) * 30) / 25).toFixed(1) + ' упаковок по 25 кг<p>(с учетом запаса 5%)</p>';
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').querySelector('ins').innerText = Number(obj_bloka_2) + Number(obj_bloka_3) + ' м³';
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').style.display = 'flex';
+                    document.querySelector('.fly_result__line-input input[name="input-' + i + '-material"]').setAttribute('data-value', +(((Number(obj_bloka_2) + Number(obj_bloka_3)) * 30) / 25).toFixed(1));
+                    document.querySelector('.fly_result__line-input input[name="input-' + i + '-material"]').closest('.input-section-parent').querySelector('.fly_result__line-input-price span').innerText = delimiter_number(parseInt(document.querySelector('.fly_result__line-input input[name="input-' + i + '-material"]').value) * Number(document.querySelector('.fly_result__line-input input[name="input-' + i + '-material"]').dataset.value));
                 } else {
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').style.display = 'none';
                 }
@@ -143,6 +222,10 @@ document.querySelector('.calculator_frame__submit').addEventListener('click', fu
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').querySelector('.fly_result__line-pesok').innerHTML = +(addition_percent(ploshad * pesok, 5)) + ' кг. песка<p>(с учетом запаса 5%)</p>';
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').querySelector('p ins').innerText = ploshad;
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').style.display = 'flex';
+                    document.querySelector('.fly_result__line-input input[name="input-' + i + '-material"]').setAttribute('data-value', Number(+(addition_percent(ploshad * cement, 5))) / 50);
+                    document.querySelector('.fly_result__line-input input[name="input-' + i + '-jobs"]').setAttribute('data-value', Number(+(addition_percent(ploshad * cement, 5))) / 1000);
+                    document.querySelector('.fly_result__line-input input[name="input-' + i + '-material"]').closest('.input-section-box').querySelector('.fly_result__line-input-price span').innerText = Number(document.querySelector('.fly_result__line-input input[name="input-' + i + '-material"]').value) * Number(document.querySelector('.fly_result__line-input input[name="input-' + i + '-material"]').dataset.value);
+                    document.querySelector('.fly_result__line-input input[name="input-' + i + '-jobs"]').closest('.input-section-box').querySelector('.fly_result__line-input-price span').innerText = Number(document.querySelector('.fly_result__line-input input[name="input-' + i + '-jobs"]').value) * Number(document.querySelector('.fly_result__line-input input[name="input-' + i + '-jobs"]').dataset.value);
                 } else {
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').style.display = 'none';
                 }
@@ -153,6 +236,10 @@ document.querySelector('.calculator_frame__submit').addEventListener('click', fu
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').querySelector('.fly_result__line-1').innerHTML = sum_cube.toFixed(1);
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').querySelector('.fly_result__line-2').innerHTML = addition_percent(sum_cube * 394, 5, 0) + ' шт.';
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').style.display = 'flex';
+                    document.querySelector('.fly_result__line-input input[name="input-' + i + '-material"]').setAttribute('data-value', addition_percent(sum_cube * 394, 5, 0));
+                    document.querySelector('.fly_result__line-input input[name="input-' + i + '-jobs"]').setAttribute('data-value', Number(sum_cube.toFixed(1)));
+                    document.querySelector('.fly_result__line-input input[name="input-' + i + '-material"]').closest('.input-section-parent').querySelector('.fly_result__line-input-price span').innerText = delimiter_number(parseInt(document.querySelector('.fly_result__line-input input[name="input-' + i + '-material"]').value) * Number(document.querySelector('.fly_result__line-input input[name="input-' + i + '-material"]').dataset.value));
+                    document.querySelector('.fly_result__line-input input[name="input-' + i + '-jobs"]').closest('.input-section-parent').querySelector('.fly_result__line-input-price span').innerText = delimiter_number(parseInt(document.querySelector('.fly_result__line-input input[name="input-' + i + '-jobs"]').value) * Number(document.querySelector('.fly_result__line-input input[name="input-' + i + '-jobs"]').dataset.value));
                 } else {
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').style.display = 'none';
                 }
@@ -163,6 +250,10 @@ document.querySelector('.calculator_frame__submit').addEventListener('click', fu
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').querySelector('.fly_result__line-1').innerHTML = sum_cube_vnut.toFixed(1);
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').querySelector('.fly_result__line-2').innerHTML = addition_percent(sum_cube_vnut * 394, 5, 0) + ' шт.';
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').style.display = 'flex';
+                    document.querySelector('.fly_result__line-input input[name="input-' + i + '-material"]').setAttribute('data-value', addition_percent(sum_cube_vnut * 394, 5, 0));
+                    document.querySelector('.fly_result__line-input input[name="input-' + i + '-jobs"]').setAttribute('data-value', Number(sum_cube_vnut.toFixed(1)));
+                    document.querySelector('.fly_result__line-input input[name="input-' + i + '-material"]').closest('.input-section-parent').querySelector('.fly_result__line-input-price span').innerText = delimiter_number(parseInt(document.querySelector('.fly_result__line-input input[name="input-' + i + '-material"]').value) * Number(document.querySelector('.fly_result__line-input input[name="input-' + i + '-material"]').dataset.value));
+                    document.querySelector('.fly_result__line-input input[name="input-' + i + '-jobs"]').closest('.input-section-parent').querySelector('.fly_result__line-input-price span').innerText = delimiter_number(parseInt(document.querySelector('.fly_result__line-input input[name="input-' + i + '-jobs"]').value) * Number(document.querySelector('.fly_result__line-input input[name="input-' + i + '-jobs"]').dataset.value));
                 } else {
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').style.display = 'none';
                 }
@@ -174,6 +265,10 @@ document.querySelector('.calculator_frame__submit').addEventListener('click', fu
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').querySelector('.fly_result__line-cement').innerHTML = +(addition_percent(sum_cube_vnut_r * 100, 5)) + ' кг. цемента<p>(с учетом запаса 5%)</p>';
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').querySelector('.fly_result__line-pesok').innerHTML = +(addition_percent(sum_cube_vnut_r * 400, 5)) + ' кг. песка<p>(с учетом запаса 5%)</p>';
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').style.display = 'flex';
+                    document.querySelector('.fly_result__line-input input[name="input-' + i + '-material"]').setAttribute('data-value', Number((addition_percent(sum_cube_vnut_r * 100, 5))) / 50);
+                    document.querySelector('.fly_result__line-input input[name="input-' + i + '-jobs"]').setAttribute('data-value', Number((addition_percent(sum_cube_vnut_r * 500, 5))) / 1000);
+                    document.querySelector('.fly_result__line-input input[name="input-' + i + '-material"]').closest('.input-section-box').querySelector('.fly_result__line-input-price span').innerText = Number(document.querySelector('.fly_result__line-input input[name="input-' + i + '-material"]').value) * Number(document.querySelector('.fly_result__line-input input[name="input-' + i + '-material"]').dataset.value);
+                    document.querySelector('.fly_result__line-input input[name="input-' + i + '-jobs"]').closest('.input-section-box').querySelector('.fly_result__line-input-price span').innerText = Number(document.querySelector('.fly_result__line-input input[name="input-' + i + '-jobs"]').value) * Number(document.querySelector('.fly_result__line-input input[name="input-' + i + '-jobs"]').dataset.value);
                 } else {
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').style.display = 'none';
                 }
@@ -182,7 +277,7 @@ document.querySelector('.calculator_frame__submit').addEventListener('click', fu
                 break;
         }
     }
-
+    receiving_price();
 });
 
 
