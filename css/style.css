@@ -29,6 +29,7 @@ body {
   margin: auto;
   border-radius: 7px;
   background: #f0f0f0;
+  overflow: hidden;
 }
 
 .calculator_frame__form {
@@ -521,6 +522,29 @@ body {
   display: flex;
 }
 
+.fly_result__line-input .fl-section-input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.fly_result__line-input .fl-section-input .input-section-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.fly_result__line-input .fl-section-input .input-section-box:last-child {
+  margin-top: 20px;
+}
+
 .fly_result__line-input > div {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -539,20 +563,60 @@ body {
   font-size: 12px;
   color: #a2a1a1;
   margin-top: 8px;
+  text-align: center;
 }
 
 .fly_result__line-input > div:first-child {
-  margin-right: 130px;
+  margin-right: 135px;
 }
 
 .fly_result__line-input > div:last-child {
-  margin-right: 55px;
+  margin-right: 15px;
 }
 
 .fly_result__line-input input {
   border: 1px solid var(--border-color);
   padding: 10px;
-  width: 115px;
+  width: 50px;
+}
+
+.fly_result__line-input > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.fly_result__line-input-value {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 60%;
+}
+
+.fly_result__line-input-price {
+  display: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 40%;
+}
+
+.fly_result__line-input-price span {
+  margin: 0 7px;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
 }
 
 .fly_result__line > img {
@@ -629,5 +693,58 @@ body {
   .fly_result__line span p {
     font-size: 10px;
   }
+}
+
+.result_total {
+  display: none;
+  -ms-grid-columns: 11% 31% 22%;
+      grid-template-columns: 11% 31% 22%;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
+  margin: 50px 0 20px 0;
+}
+
+.result_total p {
+  margin: 0;
+}
+
+.result_total-name p {
+  height: 50px;
+}
+
+.result_total-all {
+  margin-right: 97px;
+}
+
+.result_total-all > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  height: 50px;
+}
+
+.result_total-all__tavno {
+  margin: 0 10px !important;
+}
+
+.result_total-all__rubl {
+  margin-left: 5px !important;
+}
+
+.result_total-jobs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: 80px;
 }
 /*# sourceMappingURL=style.css.map */
