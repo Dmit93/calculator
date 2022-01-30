@@ -6,11 +6,8 @@ function addition_percent(number, percent, numberInFixed) {
 
 
 function delimiter_number(number) {
-    console.log((parseInt(number) * 10).toLocaleString('ru-RU') === 'не число');
-    return ((parseInt(number) * 10).toLocaleString('ru-RU') !== 'не число') ?
-        (parseInt(number) * 10).toLocaleString('ru-RU') : 0;
-
-
+    //return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+    return (parseInt(number) * 1).toLocaleString('ru-RU');
 }
 
 
@@ -46,6 +43,7 @@ function receiving_price() {
 }
 document.querySelector('.fly_result').addEventListener('input', function(e) {
     if (e.target.tagName === 'INPUT') {
+        if (!flag_total) flag_total = true;
         let value = e.target.getAttribute('data-value');
         if (e.target.closest('.input-section-parent:not(.fl-section-input)')) {
             e.target.closest('.input-section-parent').querySelector('.fly_result__line-input-price span').innerText = delimiter_number(value * e.target.value);
@@ -64,7 +62,9 @@ document.querySelector('.fly_result').addEventListener('input', function(e) {
 });
 
 
-
+let coord_total = '';
+console.log(coord_total);
+let flag_total = false;
 document.addEventListener('scroll', function(e) {
     let btn = getOffset('.calculator_frame__submit') + document.querySelector('.calculator_frame__submit').offsetHeight;
     let img = getOffset('.calculator_frame__parentImg') + document.querySelector('.calculator_frame__parentImg').offsetHeight;
@@ -80,11 +80,18 @@ document.addEventListener('scroll', function(e) {
     if (document.querySelector('.calculator_frame__submit').getBoundingClientRect().top / 2 > window.scrollY) {
         document.querySelector('.calculator_frame__parentImg').style = null;
     }
+
+    if (flag_total) {
+        if (coord_total > window.innerHeight + window.scrollY) {
+            document.querySelector('.result_total').classList.add('active');
+        } else {
+            document.querySelector('.result_total').classList.remove('active');
+        }
+    }
 });
 
 document.querySelector('.calculator_frame__submit').addEventListener('click', function(e) {
     e.preventDefault();
-
     document.querySelector('.fly_result').style.display = 'block';
     let ploshad = document.querySelector('div[data-rass="ploshad"] input').value !== '' ? document.querySelector('div[data-rass="ploshad"] input').value : 'no';
     let tolshina = document.querySelector('div[data-rass="tolshina"] p').dataset.result ? document.querySelector('div[data-rass="tolshina"] p').dataset.result : 'no';
@@ -132,7 +139,7 @@ document.querySelector('.calculator_frame__submit').addEventListener('click', fu
             case 3:
                 if (!isNaN(addition_percent(ploshad_steny * tolshina_steny, 5))) {
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').innerHTML = addition_percent(ploshad_steny * tolshina_steny, 5) + ' м³<p>(с учетом запаса 5%)</p>';
-                    document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').querySelector('ins').innerText = ploshad + ' мм';;
+                    document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').querySelector('ins').innerText = (tolshina_steny * 1000) + ' мм';
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').style.display = 'flex';
                     document.querySelector('.fly_result__line-input input[name="input-' + i + '-material"]').setAttribute('data-value', addition_percent(ploshad_steny * tolshina_steny, 5));
                     document.querySelector('.fly_result__line-input input[name="input-' + i + '-jobs"]').setAttribute('data-value', Number(ploshad_steny * tolshina_steny));
@@ -146,7 +153,7 @@ document.querySelector('.calculator_frame__submit').addEventListener('click', fu
                 if (!isNaN(addition_percent(ploshad_steny_2 * tolshina_steny_2, 5))) {
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').innerHTML = addition_percent(ploshad_steny_2 * tolshina_steny_2, 5) + ' м³<p>(с учетом запаса 5%)</p>';
                     document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').style.display = 'flex';
-                    document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').querySelector('ins').innerText = tolshina + ' мм.';
+                    document.querySelector('.fly_result__line span[data-num="' + i + '"]').closest('.fly_result__line').querySelector('ins').innerText = (tolshina_steny_2 * 1000) + ' мм.';
                     document.querySelector('.fly_result__line-input input[name="input-' + i + '-material"]').setAttribute('data-value', addition_percent(ploshad_steny_2 * tolshina_steny_2, 5));
                     document.querySelector('.fly_result__line-input input[name="input-' + i + '-jobs"]').setAttribute('data-value', Number(ploshad_steny_2 * tolshina_steny_2));
                     document.querySelector('.fly_result__line-input input[name="input-' + i + '-material"]').closest('.input-section-parent').querySelector('.fly_result__line-input-price span').innerText = delimiter_number(parseInt(document.querySelector('.fly_result__line-input input[name="input-' + i + '-material"]').value) * Number(document.querySelector('.fly_result__line-input input[name="input-' + i + '-material"]').dataset.value));
@@ -278,6 +285,7 @@ document.querySelector('.calculator_frame__submit').addEventListener('click', fu
         }
     }
     receiving_price();
+    coord_total = document.querySelector('.calculator_frame').offsetHeight;
 });
 
 
@@ -297,6 +305,14 @@ document.querySelector('.calculator_frame').addEventListener('click', function(e
         e.target.closest('ul').classList.remove('active');
 
     }
+
+    if (e.target.classList.contains('fly_result__line-input__mobile-header-img')) {
+        e.target.nextElementSibling.classList.toggle('active');
+    }
+
+    if (e.target.classList.contains('result_total-img-popap') || e.target.closest('.result_total-img-popap')) {
+        e.target.closest('.result_total').classList.toggle('active_section');
+    }
 });
 
 
@@ -305,9 +321,11 @@ document.querySelector('.calculator_frame').addEventListener('change', function(
         switch (e.target.value) {
             case 'yes':
                 e.target.closest('.calculator_frame__checkbox').nextElementSibling.classList.add('active_box');
+                coord_total = document.querySelector('.calculator_frame').offsetHeight;
                 break;
             case 'no':
                 e.target.closest('.calculator_frame__checkbox').nextElementSibling.classList.remove('active_box');
+                coord_total = document.querySelector('.calculator_frame').offsetHeight;
                 break;
             default:
                 break;
