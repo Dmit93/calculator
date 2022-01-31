@@ -49,12 +49,13 @@ document.querySelector('.fly_result').addEventListener('input', function(e) {
             e.target.closest('.input-section-parent').querySelector('.fly_result__line-input-price span').innerText = delimiter_number(value * e.target.value);
             if (!e.target.closest('.input-section-parent').querySelector('.fly_result__line-input-price').getAttribute('style')) {
                 e.target.closest('.input-section-parent').querySelector('.fly_result__line-input-price').style.display = 'flex';
-                document.querySelector('.result_total').style.display = 'grid';
+                document.querySelector('.result_total__container').style.display = 'grid';
             }
         } else {
             e.target.closest('.input-section-box').querySelector('.fly_result__line-input-price span').innerText = delimiter_number(value * e.target.value);
             if (!e.target.closest('.input-section-box').querySelector('.fly_result__line-input-price').getAttribute('style')) {
-                e.target.closest('.input-section-box').querySelector('.fly_result__line-input-price').style.display = 'flex'
+                e.target.closest('.input-section-box').querySelector('.fly_result__line-input-price').style.display = 'flex';
+                document.querySelector('.result_total__container').style.display = 'grid';
             }
         }
         receiving_price();
@@ -63,7 +64,6 @@ document.querySelector('.fly_result').addEventListener('input', function(e) {
 
 
 let coord_total = '';
-console.log(coord_total);
 let flag_total = false;
 document.addEventListener('scroll', function(e) {
     let btn = getOffset('.calculator_frame__submit') + document.querySelector('.calculator_frame__submit').offsetHeight;
