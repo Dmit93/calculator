@@ -234,7 +234,7 @@
         <img class="calculator_frame__parentImg" src="./img/dom1.jpg" alt="">
         <div class="fly_result">
             <div class="fly_result__header">
-                <h2>Этап №2. На основании результата <span>рассчитайте стоиомость материалов и строительных работ</span></h2>
+                <h2>Этап №2. <span>На основании результата</span> рассчитайте стоиомость <span>материалов и строительных работ</span></h2>
                 <p class="fly_result__header-material">Введите стоимость материала <br> <span>(с учетом доставки и разгрузки на объект)<br> (при расчете учитывает запас материала)</span></p>
                 <p class="fly_result__header-jobs">
                     Введите стоимость строительных работ<br> <span>(без учета расходов на инструменты)<br> (при расчете не учитывает запас матрериала)</span>
@@ -432,7 +432,7 @@
                                 </div>
                             </div>
                             <input type="text" name="input-5-material">
-                            <label for="input-5-material">введите стоимость за 1 м² утеплителя</label>
+                            <label for="input-5-material">введите стоимость за 1 м³ утеплителя</label>
                         </div>
                         <div class="fly_result__line-input-price">
                             = <span></span>₽
@@ -540,7 +540,7 @@
                             </div>
                             <div class="fly_result__line-input-value">
                                 <input type="text" name="input-8-material">
-                                <label for="input-8-material">введите стоимость за 1 упаковку 50кг</label>
+                                <label for="input-8-material">введите стоимость за 1 упаковку 50 кг</label>
                             </div>
                             <div class="fly_result__line-input-price">
                                 = <span></span>₽
@@ -681,7 +681,7 @@
                             </div>
                             <div class="fly_result__line-input-value">
                                 <input type="text" name="input-11-material">
-                                <label for="input-11-material">введите стоимость за 1 упаковку 50кг</label>
+                                <label for="input-11-material">введите стоимость за 1 упаковку 50 кг</label>
                             </div>
                             <div class="fly_result__line-input-price">
                                 = <span></span>₽
@@ -714,29 +714,32 @@
                 <div class="result_total-img-popap">
                     <img src="https://cdn-icons-png.flaticon.com/512/858/858151.png" alt="">
                 </div>
-                <div class="result_total-name">
-                    <p>ИТОГО</p>
-                    <p>ВСЕГО</p>
-                </div>
-                <div class="result_total-all">
-                    <div>
-                        <p class="result_total-all__title">МАТЕРИАЛЫ</p>
+                <div class="result_total__container">
+
+                    <div class="result_total-name">
+                        <p>ИТОГО</p>
+                        <p>ВСЕГО</p>
+                    </div>
+                    <div class="result_total-all">
+                        <div>
+                            <p class="result_total-all__title">МАТЕРИАЛЫ</p>
+                            <p class="result_total-all__tavno">=</p>
+                            <span class="result_total-all__materialgs"></span>
+                            <p class="result_total-all__rubl">₽</p>
+                        </div>
+                        <div>
+                            <p class="result_total-all__title">МАТЕРИАЛЫ И РАБОТЫ</p>
+                            <p class="result_total-all__tavno">=</p>
+                            <span class="result_total-all__jobs"></span>
+                            <p class="result_total-all__rubl">₽</p>
+                        </div>
+                    </div>
+                    <div class="result_total-jobs">
+                        <p class="result_total-all__title">Работы</p>
                         <p class="result_total-all__tavno">=</p>
-                        <span class="result_total-all__materialgs"></span>
+                        <span></span>
                         <p class="result_total-all__rubl">₽</p>
                     </div>
-                    <div>
-                        <p class="result_total-all__title">МАТЕРИАЛЫ И РАБОТЫ</p>
-                        <p class="result_total-all__tavno">=</p>
-                        <span class="result_total-all__jobs"></span>
-                        <p class="result_total-all__rubl">₽</p>
-                    </div>
-                </div>
-                <div class="result_total-jobs">
-                    <p class="result_total-all__title">Работы</p>
-                    <p class="result_total-all__tavno">=</p>
-                    <span></span>
-                    <p class="result_total-all__rubl">₽</p>
                 </div>
             </div>
         </div>
